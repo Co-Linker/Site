@@ -10,103 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
-  <style>
-    #page-hero { padding: 148px 0 80px; background: var(--bg-main); text-align: center; position: relative; overflow: hidden; }
-    .hero-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(184,146,42,0.08) 0%, transparent 65%); pointer-events: none; }
-    .ph-breadcrumb { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 300; color: var(--text-tertiary); margin-bottom: 24px; }
-    .ph-breadcrumb a { color: var(--text-secondary); transition: color .2s; }
-    .ph-breadcrumb a:hover { color: var(--text-primary); }
-    .ph-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(40px, 5.5vw, 66px); color: var(--text-primary); line-height: 1.1; margin-bottom: 20px; }
-    .ph-sub { font-size: 18px; font-weight: 300; color: var(--text-secondary); max-width: 600px; margin: 0 auto 44px; line-height: 1.7; }
-    .ph-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    .ph-chip { display: flex; align-items: center; gap: 7px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 100px; padding: 8px 16px; font-size: 13px; font-weight: 300; color: var(--text-secondary); transition: all .2s; }
-    .ph-chip:hover { border-color: var(--border-gold); color: var(--text-primary); background: var(--gold-bg); }
-    .ph-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-
-    /* FEATURE SECTIONS */
-    .feature-section { padding: 96px 0; }
-    .feature-section:nth-child(odd) { background: var(--bg-main); }
-    .feature-section:nth-child(even) { background: var(--surface); }
-    .fs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-    .fs-grid.reversed { direction: rtl; }
-    .fs-grid.reversed > * { direction: ltr; }
-    .fs-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--gold); background: var(--gold-bg); border: 0.5px solid var(--border-gold); border-radius: 100px; padding: 5px 14px; margin-bottom: 18px; }
-    .fs-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 600; line-height: 1.2; color: var(--text-primary); margin-bottom: 16px; }
-    .fs-title em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--gold); }
-    .fs-desc { font-size: 16px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; margin-bottom: 24px; }
-    .fs-bullets { display: flex; flex-direction: column; gap: 12px; }
-    .fs-bullet { display: flex; align-items: flex-start; gap: 12px; }
-    .fs-bullet-icon { width: 22px; height: 22px; border-radius: 50%; background: var(--gold-bg); border: 0.5px solid var(--border-gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-    .fs-bullet-icon svg { width: 10px; height: 10px; }
-    .fs-bullet-text { font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.55; }
-    .fs-bullet-text strong { font-weight: 600; color: var(--text-primary); }
-
-    /* PHONE VISUAL VARIANTS */
-    .phone-visual { display: flex; justify-content: center; }
-
-    /* Wallet screen */
-    .wallet-scroll { flex: 1; overflow: hidden; padding: 0 12px 8px; display: flex; flex-direction: column; gap: 10px; }
-    .wallet-header { padding: 4px 14px 8px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-    .wallet-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
-    .offer-row { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 10px; }
-    .offer-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--gold-bg); border: 0.5px solid var(--border-gold); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-    .offer-title { font-size: 11px; font-weight: 600; color: var(--text-primary); }
-    .offer-meta { font-size: 9px; font-weight: 300; color: var(--text-secondary); }
-    .offer-pts { margin-left: auto; font-size: 10px; font-weight: 600; color: var(--gold); white-space: nowrap; }
-
-    /* Tier screen */
-    .tier-card { margin: 0 12px; border-radius: 14px; padding: 14px; flex-shrink: 0; }
-    .tier-standard { background: rgba(26,26,26,0.06); }
-    .tier-bronze { background: linear-gradient(135deg, rgba(180,80,20,.12), rgba(180,80,20,.04)); border: 0.5px solid rgba(180,80,20,.2); }
-    .tier-gold { background: linear-gradient(135deg, rgba(184,146,42,.18), rgba(184,146,42,.06)); border: 0.5px solid var(--border-gold); }
-    .tier-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
-    .tier-pts { font-size: 10px; font-weight: 300; color: var(--text-secondary); margin-top: 2px; }
-    .tier-bar { height: 3px; background: var(--border); border-radius: 100px; margin-top: 8px; overflow: hidden; }
-    .tier-fill { height: 100%; border-radius: 100px; background: var(--gold); }
-
-    /* Flash screen */
-    .flash-card { margin: 0 12px; background: linear-gradient(135deg, #1A1A1A, #251d0f); border-radius: 14px; padding: 14px; flex-shrink: 0; position: relative; overflow: hidden; }
-    .flash-badge { display: inline-block; background: var(--red); color: #fff; font-size: 9px; font-weight: 600; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px; animation: pulse-dot 1.5s ease-in-out infinite; }
-    .flash-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; }
-    .flash-discount { font-size: 32px; font-weight: 600; color: var(--gold-light); line-height: 1; letter-spacing: -1px; }
-    .flash-timer { font-size: 9px; font-weight: 300; color: rgba(255,255,255,.45); margin-top: 4px; }
-
-    /* Analytics screen */
-    .analytics-scroll { flex: 1; overflow: hidden; padding: 8px 12px 0; display: flex; flex-direction: column; gap: 8px; }
-    .analytics-kpi { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
-    .analytics-chip { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 10px; }
-    .analytics-val { font-size: 16px; font-weight: 600; color: var(--text-primary); line-height: 1; }
-    .analytics-lbl { font-size: 8px; font-weight: 300; color: var(--text-secondary); margin-top: 2px; }
-    .heat-row { display: flex; gap: 3px; }
-    .heat-cell { width: 10px; height: 10px; border-radius: 2px; }
-
-    /* ALL FEATURES GRID */
-    #all-features { background: var(--bg-main); }
-    .af-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .af-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r-xl); padding: 24px; transition: all .3s cubic-bezier(0.22,1,0.36,1); }
-    .af-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); border-color: var(--border-gold); }
-    .af-icon { font-size: 26px; margin-bottom: 12px; }
-    .af-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
-    .af-desc { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.6; }
-    .af-badge { display: inline-block; font-size: 10px; font-weight: 600; color: var(--gold); background: var(--gold-bg); border: 0.5px solid var(--border-gold); border-radius: 100px; padding: 2px 8px; margin-top: 10px; }
-
-    /* CTA */
-    #cta-section { background: var(--dark-bar); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
-    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(184,146,42,0.12) 0%, transparent 65%); }
-    .cta-content { position: relative; z-index: 1; }
-    .cf-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing:.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-    .cf-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(36px,5vw,60px); color: #fff; line-height: 1.1; margin-bottom: 20px; }
-    .cf-sub { font-size: 17px; font-weight: 300; color: rgba(255,255,255,.5); max-width: 500px; margin: 0 auto 40px; line-height: 1.7; }
-    .cf-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-    @media (max-width: 860px) {
-      .fs-grid, .fs-grid.reversed { grid-template-columns: 1fr; direction: ltr; }
-      .af-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .af-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
@@ -138,10 +41,12 @@
 <main>
 
 <!-- HERO -->
-<section id="page-hero">
-  <div class="hero-glow"></div>
-  <div class="container" style="position:relative;z-index:1">
-    <div class="ph-breadcrumb fade-up"><a href="./">Accueil</a><span>›</span><span>Fonctionnalités</span></div>
+<section class="page-hero">
+  <div class="page-hero__glow"></div>
+  <div class="container page-hero__inner">
+    <div class="ph-breadcrumb fade-up">
+      <a href="./">Accueil</a><span>›</span><span>Fonctionnalités</span>
+    </div>
     <div class="tag-pill fade-up d1"><span class="dot"></span>Tout ce qu'il faut</div>
     <h1 class="ph-title fade-up d2">Une app de fidélité<br>qui <em>fait vraiment</em> le travail.</h1>
     <p class="ph-sub fade-up d3">Wallet digital, scanner QR, tiers de fidélité, offres flash, analytics avancés. Tout ce dont votre commerce a besoin, dans une seule app.</p>
@@ -157,7 +62,7 @@
 </section>
 
 <!-- WALLET -->
-<section id="wallet" class="feature-section">
+<section id="wallet" class="feature-section feature-section--light">
   <div class="container">
     <div class="fs-grid">
       <div>
@@ -165,10 +70,22 @@
         <h2 class="fs-title fade-left d1">Wallet de fidélité<br><em>tout-en-un</em></h2>
         <p class="fs-desc fade-left d2">Fini les cartes papier égarées. Toutes les cartes de fidélité de vos commerces préférés dans une seule application, toujours dans votre poche.</p>
         <div class="fs-bullets fade-left d3">
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Toutes vos cartes</strong> dans une seule app. Plus jamais de carte oubliée.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Points automatiques</strong> à chaque scan. Aucune action requise de votre part.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Récompenses disponibles</strong> dès que vous atteignez le seuil. Échange en 1 tap.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Historique complet</strong> de vos visites et points. Transparence totale.</p></div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Toutes vos cartes</strong> dans une seule app. Plus jamais de carte oubliée.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Points automatiques</strong> à chaque scan. Aucune action requise de votre part.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Récompenses disponibles</strong> dès que vous atteignez le seuil. Échange en 1 tap.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Historique complet</strong> de vos visites et points. Transparence totale.</p>
+          </div>
         </div>
       </div>
       <div class="phone-visual fade-right d2">
@@ -177,25 +94,66 @@
             <div class="dynamic-island"></div>
             <div class="status-bar"><span class="status-time">9:41</span></div>
             <div class="phone-content">
-              <div class="wallet-header"><div class="wallet-title">Mon Wallet</div><span class="metric-chip chip-gold">3 cartes</span></div>
+              <div class="wallet-header">
+                <div class="wallet-title">Mon Wallet</div>
+                <span class="metric-chip chip-gold">3 cartes</span>
+              </div>
               <div class="wallet-scroll">
                 <div class="loyalty-card">
                   <div class="lc-row"><div class="lc-brand">Le Café du Coin</div><div class="lc-tier">Gold</div></div>
-                  <div class="lc-pts-num">840 <span style="font-size:12px;font-weight:300;opacity:.6">pts</span></div>
+                  <div class="lc-pts-num">840 <span class="lc-pts-unit">pts</span></div>
                   <div class="lc-progress"><div class="lc-progress-bar" style="width:68%"></div></div>
-                  <div class="lc-stamps"><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp"></div><div class="lc-stamp"></div><div class="lc-stamp"></div></div>
+                  <div class="lc-progress-row">
+                    <span class="lc-progress-label">840 pts</span>
+                    <span class="lc-progress-label">1 000 pts Platinum</span>
+                  </div>
+                  <div class="lc-stamps">
+                    <div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div>
+                    <div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div>
+                    <div class="lc-stamp on"></div><div class="lc-stamp"></div><div class="lc-stamp"></div><div class="lc-stamp"></div>
+                  </div>
                 </div>
-                <div style="font-size:10px;font-weight:600;color:var(--text-primary)">Récompenses disponibles</div>
-                <div class="offer-row"><div class="offer-icon">☕</div><div><div class="offer-title">Café offert</div><div class="offer-meta">100 pts requis · Disponible !</div></div><div class="offer-pts" style="color:var(--green)">Échanger →</div></div>
-                <div class="offer-row"><div class="offer-icon">🥐</div><div><div class="offer-title">Viennoiserie</div><div class="offer-meta">150 pts · Il vous en faut 50 de plus</div></div><div class="offer-pts">150 pts</div></div>
-                <div style="font-size:10px;font-weight:600;color:var(--text-primary)">Mes autres cartes</div>
-                <div class="offer-row" style="background:var(--gold-bg);border-color:var(--border-gold)"><div class="offer-icon" style="background:rgba(48,209,88,0.1)">🌿</div><div><div class="offer-title">Bio du Quartier</div><div class="offer-meta">Silver · 320 pts</div></div><div class="offer-pts">320 pts</div></div>
+                <div class="wallet-section-title">Récompenses disponibles</div>
+                <div class="offer-row">
+                  <div class="offer-icon">☕</div>
+                  <div>
+                    <div class="offer-title">Café offert</div>
+                    <div class="offer-meta">100 pts requis · Disponible !</div>
+                  </div>
+                  <div class="offer-pts offer-pts--green">Échanger →</div>
+                </div>
+                <div class="offer-row">
+                  <div class="offer-icon">🥐</div>
+                  <div>
+                    <div class="offer-title">Viennoiserie</div>
+                    <div class="offer-meta">150 pts · Il vous en faut 50 de plus</div>
+                  </div>
+                  <div class="offer-pts">150 pts</div>
+                </div>
+                <div class="wallet-section-title">Mes autres cartes</div>
+                <div class="offer-row offer-row--gold">
+                  <div class="offer-icon offer-icon--green">🌿</div>
+                  <div>
+                    <div class="offer-title">Bio du Quartier</div>
+                    <div class="offer-meta">Silver · 320 pts</div>
+                  </div>
+                  <div class="offer-pts">320 pts</div>
+                </div>
               </div>
             </div>
             <div class="tab-bar">
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10.5l5-5 4 4 5-5" stroke="var(--text-tertiary)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tab-label">Explore</div></div>
-              <div class="tab-item active"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="3" stroke="var(--gold)" stroke-width="1.4"/><path d="M3 8h14" stroke="var(--gold)" stroke-width="1.4"/></svg></div><div class="tab-label" style="color:var(--gold);font-weight:600">Wallet</div></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="var(--text-tertiary)" stroke-width="1.4"/><path d="M3 17c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="var(--text-tertiary)" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="tab-label">Profil</div></div>
+              <div class="tab-item">
+                <div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10.5l5-5 4 4 5-5" stroke="var(--text-tertiary)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="tab-label">Explore</div>
+              </div>
+              <div class="tab-item active">
+                <div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="3" stroke="var(--gold)" stroke-width="1.4"/><path d="M3 8h14" stroke="var(--gold)" stroke-width="1.4"/></svg></div>
+                <div class="tab-label">Wallet</div>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="var(--text-tertiary)" stroke-width="1.4"/><path d="M3 17c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="var(--text-tertiary)" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                <div class="tab-label">Profil</div>
+              </div>
             </div>
           </div>
         </div>
@@ -205,17 +163,26 @@
 </section>
 
 <!-- SCANNER -->
-<section id="scanner" class="feature-section">
+<section id="scanner" class="feature-section feature-section--surface">
   <div class="container">
-    <div class="fs-grid reversed">
+    <div class="fs-grid fs-grid--reversed">
       <div>
         <div class="fs-tag fade-right">Pour les commerçants</div>
         <h2 class="fs-title fade-right d1">Scanner QR<br><em>instantané</em></h2>
         <p class="fs-desc fade-right d2">3 secondes par client. Le commerçant scanne, les points s'ajoutent, le client reçoit une notification. Simple, rapide, sans erreur.</p>
         <div class="fs-bullets fade-right d3">
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>3 secondes</strong> par scan. Plus rapide que de tampionner une carte papier.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Fonctionne hors ligne.</strong> Pas de connexion ? Les scans sont synchronisés dès le retour.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Profil client visible</strong> au scan. Historique, tier, dernière visite.</p></div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>3 secondes</strong> par scan. Plus rapide que de tamponner une carte papier.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Fonctionne hors ligne.</strong> Pas de connexion ? Les scans sont synchronisés dès le retour.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Profil client visible</strong> au scan. Historique, tier, dernière visite.</p>
+          </div>
         </div>
       </div>
       <div class="phone-visual fade-left d2">
@@ -223,24 +190,27 @@
           <div class="phone-screen">
             <div class="dynamic-island"></div>
             <div class="status-bar"><span class="status-time">9:41</span></div>
-            <div class="phone-content" style="padding:12px;gap:10px;display:flex;flex-direction:column">
-              <div style="background:#1A1A1A;border-radius:20px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden">
-                <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(184,146,42,0.15) 0%,transparent 65%)"></div>
-                <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em">Scanner QR Client</div>
-                <div style="width:110px;height:110px;border-radius:20px;border:2px solid rgba(184,146,42,0.5);position:relative;display:flex;align-items:center;justify-content:center">
-                  <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:3px solid var(--gold);border-left:3px solid var(--gold);border-radius:4px 0 0 0"></div>
-                  <div style="position:absolute;top:-1px;right:-1px;width:18px;height:18px;border-top:3px solid var(--gold);border-right:3px solid var(--gold);border-radius:0 4px 0 0"></div>
-                  <div style="position:absolute;bottom:-1px;left:-1px;width:18px;height:18px;border-bottom:3px solid var(--gold);border-left:3px solid var(--gold);border-radius:0 0 0 4px"></div>
-                  <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:3px solid var(--gold);border-right:3px solid var(--gold);border-radius:0 0 4px 0"></div>
+            <div class="phone-content phone-content--pad">
+              <div class="scanner-viewfinder">
+                <div class="scanner-viewfinder__bg"></div>
+                <div class="scanner-label">Scanner QR Client</div>
+                <div class="scanner-frame">
+                  <div class="scanner-corner scanner-corner--tl"></div>
+                  <div class="scanner-corner scanner-corner--tr"></div>
+                  <div class="scanner-corner scanner-corner--bl"></div>
+                  <div class="scanner-corner scanner-corner--br"></div>
                   <div class="qr-grid" id="qrGrid" style="width:60px;gap:2px"></div>
                 </div>
-                <div style="position:absolute;left:50%;transform:translateX(-50%);width:110px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scan-line 2s ease-in-out infinite alternate;border-radius:2px;opacity:.8"></div>
-                <div style="font-size:9px;font-weight:300;color:rgba(255,255,255,.3)">Approchez le QR code</div>
+                <div class="scanner-line"></div>
+                <div class="scanner-hint">Approchez le QR code</div>
               </div>
-              <div style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.25);border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px">
-                <div style="width:36px;height:36px;border-radius:50%;background:rgba(48,209,88,0.15);display:flex;align-items:center;justify-content:center;font-size:18px">✓</div>
-                <div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--text-primary)">Marie Dupont · Gold</div><div style="font-size:10px;font-weight:300;color:var(--text-secondary)">12 visites · 840 pts</div></div>
-                <div style="font-size:20px;font-weight:600;color:var(--gold)">+10</div>
+              <div class="scan-result">
+                <div class="scan-result__avatar">✓</div>
+                <div class="scan-result__info">
+                  <div class="scan-result__name">Marie Dupont · Gold</div>
+                  <div class="scan-result__meta">12 visites · 840 pts</div>
+                </div>
+                <div class="scan-result__pts">+10</div>
               </div>
             </div>
           </div>
@@ -251,7 +221,7 @@
 </section>
 
 <!-- TIERS -->
-<section id="tiers" class="feature-section">
+<section id="tiers" class="feature-section feature-section--light">
   <div class="container">
     <div class="fs-grid">
       <div>
@@ -259,9 +229,18 @@
         <h2 class="fs-title fade-left d1">Tiers de fidélité<br><em>progressifs</em></h2>
         <p class="fs-desc fade-left d2">Standard, Bronze, Gold, Platinum. Un système de progression qui rend vos clients accros. Plus ils visitent, plus ils montent, plus ils reviennent.</p>
         <div class="fs-bullets fade-left d3">
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>4 niveaux</strong> : Standard → Bronze → Gold → Platinum.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Avantages exclusifs</strong> par palier. Vos VIP se sentent vraiment VIP.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Progression visible</strong> dans le wallet. La barre de progression qui motive.</p></div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>4 niveaux</strong> : Standard → Bronze → Gold → Platinum.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Avantages exclusifs</strong> par palier. Vos VIP se sentent vraiment VIP.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Progression visible</strong> dans le wallet. La barre de progression qui motive.</p>
+          </div>
         </div>
       </div>
       <div class="phone-visual fade-right d2">
@@ -269,27 +248,36 @@
           <div class="phone-screen">
             <div class="dynamic-island"></div>
             <div class="status-bar"><span class="status-time">9:41</span></div>
-            <div class="phone-content" style="padding:12px;gap:8px;display:flex;flex-direction:column">
-              <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Vos niveaux de fidélité</div>
-              <div class="tier-card tier-gold">
-                <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="phone-content phone-content--pad">
+              <div class="tiers-header">Vos niveaux de fidélité</div>
+              <div class="tier-card tier-card--gold">
+                <div class="tier-card__row">
                   <div class="tier-title">🏆 Gold — Actuel</div>
-                  <span class="metric-chip chip-gold" style="font-size:9px;padding:2px 8px">840 pts</span>
+                  <span class="metric-chip chip-gold tier-chip">840 pts</span>
                 </div>
                 <div class="tier-pts">+20 pts/visite · Café offert tous les 10 scans</div>
                 <div class="tier-bar"><div class="tier-fill" style="width:68%"></div></div>
-                <div style="font-size:8px;font-weight:300;color:var(--text-secondary);margin-top:4px">160 pts avant Platinum</div>
+                <div class="tier-next">160 pts avant Platinum</div>
               </div>
-              <div class="tier-card tier-standard" style="opacity:.7">
-                <div style="display:flex;justify-content:space-between"><div class="tier-title">⭐ Standard</div><span style="font-size:9px;color:var(--green)">✓ Atteint</span></div>
+              <div class="tier-card tier-card--standard tier-card--muted">
+                <div class="tier-card__row">
+                  <div class="tier-title">⭐ Standard</div>
+                  <span class="tier-achieved">✓ Atteint</span>
+                </div>
                 <div class="tier-pts">+10 pts/visite</div>
               </div>
-              <div class="tier-card tier-bronze" style="opacity:.7">
-                <div style="display:flex;justify-content:space-between"><div class="tier-title">🥉 Bronze</div><span style="font-size:9px;color:var(--green)">✓ Atteint</span></div>
+              <div class="tier-card tier-card--bronze tier-card--muted">
+                <div class="tier-card__row">
+                  <div class="tier-title">🥉 Bronze</div>
+                  <span class="tier-achieved">✓ Atteint</span>
+                </div>
                 <div class="tier-pts">+15 pts/visite · Réductions exclusives</div>
               </div>
-              <div style="background:linear-gradient(135deg,rgba(200,180,100,.12),rgba(200,180,100,.04));border:0.5px solid rgba(200,180,100,.25);border-radius:14px;padding:14px">
-                <div style="display:flex;justify-content:space-between;align-items:center"><div class="tier-title">💎 Platinum</div><span style="font-size:9px;color:var(--text-tertiary)">160 pts →</span></div>
+              <div class="tier-card tier-card--platinum">
+                <div class="tier-card__row">
+                  <div class="tier-title">💎 Platinum</div>
+                  <span class="tier-next-label">160 pts →</span>
+                </div>
                 <div class="tier-pts">+30 pts/visite · Accès prioritaire · Cadeaux</div>
               </div>
             </div>
@@ -301,17 +289,26 @@
 </section>
 
 <!-- FLASH -->
-<section id="flash" class="feature-section">
+<section id="flash" class="feature-section feature-section--surface">
   <div class="container">
-    <div class="fs-grid reversed">
+    <div class="fs-grid fs-grid--reversed">
       <div>
-        <div class="fs-tag fade-right">Urgence & engagement</div>
+        <div class="fs-tag fade-right">Urgence &amp; engagement</div>
         <h2 class="fs-title fade-right d1">Offres Flash<br><em>à durée limitée</em></h2>
         <p class="fs-desc fade-right d2">Lancez une offre en 30 secondes. Elle apparaît dans l'onglet Découvrir de tous vos clients proches. Parfait pour écouler un surplus ou animer un creux.</p>
         <div class="fs-bullets fade-right d3">
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Visible géolocalement</strong> auprès de vos clients à proximité.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Countdown visible</strong> qui crée l'urgence et pousse à venir.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Récompenses en points</strong> ou réductions %. Vous choisissez.</p></div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Visible géolocalement</strong> auprès de vos clients à proximité.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Countdown visible</strong> qui crée l'urgence et pousse à venir.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Récompenses en points</strong> ou réductions %. Vous choisissez.</p>
+          </div>
         </div>
       </div>
       <div class="phone-visual fade-left d2">
@@ -319,28 +316,31 @@
           <div class="phone-screen">
             <div class="dynamic-island"></div>
             <div class="status-bar"><span class="status-time">9:41</span></div>
-            <div class="phone-content" style="padding:12px;gap:10px;display:flex;flex-direction:column">
-              <div style="font-size:11px;font-weight:600;color:var(--text-primary)">⚡ Flash Deals près de vous</div>
+            <div class="phone-content phone-content--pad">
+              <div class="flash-section-title">⚡ Flash Deals près de vous</div>
               <div class="flash-card">
                 <div class="flash-badge">⚡ FLASH · 2h 34min restantes</div>
                 <div class="flash-title">Le Café du Coin</div>
                 <div class="flash-discount">−30%</div>
-                <div style="font-size:11px;font-weight:300;color:rgba(255,255,255,.6);margin-top:4px">Sur toutes les boissons chaudes</div>
-                <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between">
+                <div class="flash-subtitle">Sur toutes les boissons chaudes</div>
+                <div class="flash-footer">
                   <div class="flash-timer">⏱ Expire à 12h00</div>
-                  <div style="background:var(--gold);color:#fff;font-size:10px;font-weight:600;padding:4px 12px;border-radius:100px">En profiter →</div>
+                  <div class="flash-cta">En profiter →</div>
                 </div>
               </div>
-              <div class="flash-card" style="background:linear-gradient(135deg,#0d1f38,#0a2a4a)">
-                <div class="flash-badge" style="background:var(--blue)">⚡ FLASH · 5h restantes</div>
+              <div class="flash-card flash-card--blue">
+                <div class="flash-badge flash-badge--blue">⚡ FLASH · 5h restantes</div>
                 <div class="flash-title">Bio du Quartier</div>
-                <div class="flash-discount" style="color:#60a5fa">Anti-gaspi</div>
-                <div style="font-size:11px;font-weight:300;color:rgba(255,255,255,.55);margin-top:4px">Paniers légumes · 5€ au lieu de 12€</div>
+                <div class="flash-discount flash-discount--blue">Anti-gaspi</div>
+                <div class="flash-subtitle">Paniers légumes · 5€ au lieu de 12€</div>
               </div>
-              <div style="display:flex;align-items:center;gap:8px;background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:10px">
-                <div style="font-size:16px">🥐</div>
-                <div><div style="font-size:10px;font-weight:600;color:var(--text-primary)">Boulangerie Martin</div><div style="font-size:8px;font-weight:300;color:var(--text-secondary)">+50 pts · Viennoiseries · Expire 18h</div></div>
-                <span class="metric-chip chip-gold" style="margin-left:auto;font-size:9px">+50 pts</span>
+              <div class="flash-row">
+                <div class="flash-row__icon">🥐</div>
+                <div>
+                  <div class="flash-row__title">Boulangerie Martin</div>
+                  <div class="flash-row__meta">+50 pts · Viennoiseries · Expire 18h</div>
+                </div>
+                <span class="metric-chip chip-gold flash-row__pts">+50 pts</span>
               </div>
             </div>
           </div>
@@ -351,7 +351,7 @@
 </section>
 
 <!-- ANALYTICS -->
-<section id="analytics" class="feature-section">
+<section id="analytics" class="feature-section feature-section--light">
   <div class="container">
     <div class="fs-grid">
       <div>
@@ -359,13 +359,39 @@
         <h2 class="fs-title fade-left d1">Analytics <em>avancés</em><br>en temps réel</h2>
         <p class="fs-desc fade-left d2">LTV client, taux de churn, heatmap des visites, clients à risque. Prenez des décisions basées sur des données, pas sur des intuitions.</p>
         <div class="fs-bullets fade-left d3">
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>LTV (Lifetime Value)</strong> par client. Identifiez vos clients les plus précieux.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Heatmap des visites</strong>. Savez quand votre boutique est la plus fréquentée.</p></div>
-          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Taux de rétention</strong> semaine par semaine. Mesurez l'impact de vos actions.</p></div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>LTV (Lifetime Value)</strong> par client. Identifiez vos clients les plus précieux.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Heatmap des visites.</strong> Sachez quand votre boutique est la plus fréquentée.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Taux de rétention</strong> semaine par semaine. Mesurez l'impact de vos actions.</p>
+          </div>
         </div>
-        <div style="margin-top:20px">
+        <div class="fs-premium-footer">
           <span class="metric-chip chip-gold">✦ Plan Premium uniquement</span>
-          <a href="tarifs.html" style="display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--gold);border-bottom:1px solid var(--border-gold)">Voir les tarifs →</a>
+          <a href="tarifs.html" class="fs-link">Voir les tarifs →</a>
+        </div>
+        <!-- Compteurs animés -->
+        <div class="stats-bar fade-left d4">
+          <div class="stat-item">
+            <div class="stat-num" data-count="42" data-suffix="€">0€</div>
+            <div class="stat-lbl">LTV moyen</div>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-item">
+            <div class="stat-num" data-count="72" data-suffix="%">0%</div>
+            <div class="stat-lbl">Rétention 30j</div>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-item">
+            <div class="stat-num" data-count="4.2" data-suffix="j">0j</div>
+            <div class="stat-lbl">Fréq. visite</div>
+          </div>
         </div>
       </div>
       <div class="phone-visual fade-right d2">
@@ -374,33 +400,82 @@
             <div class="dynamic-island"></div>
             <div class="status-bar"><span class="status-time">9:41</span></div>
             <div class="phone-content">
-              <div style="padding:6px 14px 4px;font-size:12px;font-weight:600;color:var(--text-primary)">Analytics Premium</div>
+              <div class="analytics-header">Analytics Premium</div>
               <div class="analytics-scroll">
                 <div class="analytics-kpi">
                   <div class="analytics-chip"><div class="analytics-val">€42</div><div class="analytics-lbl">LTV moyen</div></div>
-                  <div class="analytics-chip"><div class="analytics-val" style="color:var(--red)">8%</div><div class="analytics-lbl">Taux churn</div></div>
+                  <div class="analytics-chip"><div class="analytics-val analytics-val--red">8%</div><div class="analytics-lbl">Taux churn</div></div>
                   <div class="analytics-chip"><div class="analytics-val">72%</div><div class="analytics-lbl">Rétention 30j</div></div>
-                  <div class="analytics-chip"><div class="analytics-val" style="color:var(--green)">4.2j</div><div class="analytics-lbl">Fréq. visite</div></div>
+                  <div class="analytics-chip"><div class="analytics-val analytics-val--green">4.2j</div><div class="analytics-lbl">Fréq. visite</div></div>
                 </div>
-                <div style="font-size:10px;font-weight:600;color:var(--text-primary)">Heatmap visites / heure</div>
-                <div style="display:flex;flex-direction:column;gap:3px">
-                  <div style="display:flex;gap:2px;align-items:center">
-                    <div style="font-size:7px;width:16px;color:var(--text-tertiary)">Lun</div>
-                    <div class="heat-cell" style="background:rgba(184,146,42,.08)"></div><div class="heat-cell" style="background:rgba(184,146,42,.15)"></div><div class="heat-cell" style="background:rgba(184,146,42,.35)"></div><div class="heat-cell" style="background:rgba(184,146,42,.6)"></div><div class="heat-cell" style="background:rgba(184,146,42,.85)"></div><div class="heat-cell" style="background:var(--gold)"></div><div class="heat-cell" style="background:rgba(184,146,42,.6)"></div><div class="heat-cell" style="background:rgba(184,146,42,.25)"></div><div class="heat-cell" style="background:rgba(184,146,42,.1)"></div>
-                  </div>
-                  <div style="display:flex;gap:2px;align-items:center">
-                    <div style="font-size:7px;width:16px;color:var(--text-tertiary)">Mar</div>
-                    <div class="heat-cell" style="background:rgba(184,146,42,.05)"></div><div class="heat-cell" style="background:rgba(184,146,42,.2)"></div><div class="heat-cell" style="background:rgba(184,146,42,.45)"></div><div class="heat-cell" style="background:rgba(184,146,42,.75)"></div><div class="heat-cell" style="background:var(--gold)"></div><div class="heat-cell" style="background:rgba(184,146,42,.7)"></div><div class="heat-cell" style="background:rgba(184,146,42,.4)"></div><div class="heat-cell" style="background:rgba(184,146,42,.15)"></div><div class="heat-cell" style="background:rgba(184,146,42,.05)"></div>
-                  </div>
-                  <div style="display:flex;gap:2px;align-items:center">
-                    <div style="font-size:7px;width:16px;color:var(--text-tertiary)">Mer</div>
-                    <div class="heat-cell" style="background:rgba(184,146,42,.1)"></div><div class="heat-cell" style="background:rgba(184,146,42,.25)"></div><div class="heat-cell" style="background:rgba(184,146,42,.5)"></div><div class="heat-cell" style="background:rgba(184,146,42,.8)"></div><div class="heat-cell" style="background:var(--gold)"></div><div class="heat-cell" style="background:rgba(184,146,42,.65)"></div><div class="heat-cell" style="background:rgba(184,146,42,.3)"></div><div class="heat-cell" style="background:rgba(184,146,42,.1)"></div><div class="heat-cell" style="background:rgba(184,146,42,.05)"></div>
-                  </div>
+                <div class="analytics-sub-title">Heatmap visites / heure</div>
+                <div class="heatmap" id="heatmapGrid"></div>
+                <div class="analytics-sub-title">Clients à risque de churn</div>
+                <div class="churn-alert">
+                  <div class="churn-alert__title">3 clients inactifs 21j+</div>
+                  <div class="churn-alert__names">Marie D., Thomas L., Léa M.</div>
                 </div>
-                <div style="font-size:10px;font-weight:600;color:var(--text-primary)">Clients à risque de churn</div>
-                <div style="background:rgba(255,59,48,.06);border:0.5px solid rgba(255,59,48,.18);border-radius:10px;padding:8px">
-                  <div style="font-size:10px;font-weight:600;color:var(--red)">3 clients inactifs 21j+</div>
-                  <div style="font-size:8px;font-weight:300;color:var(--text-secondary);margin-top:2px">Marie D., Thomas L., Léa M.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASS MENSUEL -->
+<section id="pass" class="feature-section feature-section--surface">
+  <div class="container">
+    <div class="fs-grid fs-grid--reversed">
+      <div>
+        <div class="fs-tag fade-right">Revenus récurrents</div>
+        <h2 class="fs-title fade-right d1">Pass mensuel<br><em>par abonnement</em></h2>
+        <p class="fs-desc fade-right d2">Créez des abonnements mensuels pour vos clients les plus fidèles. Revenus prévisibles chaque mois, engagement maximal garanti.</p>
+        <div class="fs-bullets fade-right d3">
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Revenus prévisibles</strong> chaque mois. Fini l'incertitude du chiffre d'affaires.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Avantages exclusifs</strong> pour les abonnés. Un statut qui crée de la loyauté.</p>
+          </div>
+          <div class="fs-bullet">
+            <div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p class="fs-bullet-text"><strong>Gestion automatique</strong> des renouvellements. Zéro friction pour vous et vos clients.</p>
+          </div>
+        </div>
+      </div>
+      <div class="phone-visual fade-left d2">
+        <div class="phone-device float" style="animation-delay:1.2s">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar"><span class="status-time">9:41</span></div>
+            <div class="phone-content phone-content--pad">
+              <div class="pass-card">
+                <div class="pass-card__badge">✦ PASS MENSUEL</div>
+                <div class="pass-card__name">Le Café du Coin</div>
+                <div class="pass-card__price">9<span class="pass-card__currency">€</span><span class="pass-card__per">/mois</span></div>
+                <div class="pass-card__perks">
+                  <div class="pass-perk">☕ Café offert chaque jour</div>
+                  <div class="pass-perk">⭐ +30 pts par visite</div>
+                  <div class="pass-perk">🎁 Surprise mensuelle</div>
+                </div>
+                <div class="pass-card__cta">Activer mon Pass →</div>
+              </div>
+              <div class="pass-info">
+                <div class="pass-info__row">
+                  <span class="pass-info__label">Renouvellement</span>
+                  <span class="pass-info__val">15 mai 2025</span>
+                </div>
+                <div class="pass-info__row">
+                  <span class="pass-info__label">Abonnés actifs</span>
+                  <span class="pass-info__val pass-info__val--gold">24 clients</span>
+                </div>
+                <div class="pass-info__row">
+                  <span class="pass-info__label">MRR estimé</span>
+                  <span class="pass-info__val pass-info__val--gold">216 €/mois</span>
                 </div>
               </div>
             </div>
@@ -412,7 +487,7 @@
 </section>
 
 <!-- ALL FEATURES GRID -->
-<section id="all-features">
+<section id="all-features" class="feature-section feature-section--light">
   <div class="container">
     <header class="section-header">
       <div class="section-label fade-up">Tout inclus</div>
@@ -420,20 +495,46 @@
       <p class="section-subtitle fade-up d2">CoLinker continue d'évoluer avec de nouvelles fonctionnalités chaque mois.</p>
     </header>
     <div class="af-grid">
-      <div class="af-card fade-up d1"><div class="af-icon">🎫</div><div class="af-title">Pass mensuels</div><p class="af-desc">Créez des abonnements récurrents pour vos clients. Revenus prévisibles, engagement maximal.</p><span class="af-badge">✦ Premium</span></div>
-      <div class="af-card fade-up d2"><div class="af-icon">🛒</div><div class="af-title">Click & Collect</div><p class="af-desc">Vos clients commandent depuis l'app, vous préparez. Anti-gaspi et click & collect intégrés.</p></div>
-      <div class="af-card fade-up d3"><div class="af-icon">📩</div><div class="af-title">Rapport hebdo</div><p class="af-desc">Chaque lundi, recevez un résumé complet de votre semaine. Tendances et alertes incluses.</p></div>
-      <div class="af-card fade-up d4"><div class="af-icon">⭐</div><div class="af-title">Boost avis Google</div><p class="af-desc">Envoyez automatiquement une invitation à laisser un avis après chaque 3ème visite. +20 pts bonus.</p></div>
-      <div class="af-card fade-up d5"><div class="af-icon">🔔</div><div class="af-title">Notifications push</div><p class="af-desc">Alertes scan, offres flash, upgrades de tier. Vos clients restent connectés à votre commerce.</p></div>
-      <div class="af-card fade-up d6"><div class="af-icon">🌍</div><div class="af-title">Onglet Découvrir</div><p class="af-desc">Vos offres flash et publications apparaissent dans l'onglet Explore des clients autour de vous.</p><span class="af-badge">✦ Premium prioritaire</span></div>
+      <div class="af-card fade-up d1">
+        <div class="af-icon">🎫</div>
+        <div class="af-title">Pass mensuels</div>
+        <p class="af-desc">Créez des abonnements récurrents pour vos clients. Revenus prévisibles, engagement maximal.</p>
+        <span class="af-badge">✦ Premium</span>
+      </div>
+      <div class="af-card fade-up d2">
+        <div class="af-icon">🛒</div>
+        <div class="af-title">Click &amp; Collect</div>
+        <p class="af-desc">Vos clients commandent depuis l'app, vous préparez. Anti-gaspi et click &amp; collect intégrés.</p>
+      </div>
+      <div class="af-card fade-up d3">
+        <div class="af-icon">📩</div>
+        <div class="af-title">Rapport hebdo</div>
+        <p class="af-desc">Chaque lundi, recevez un résumé complet de votre semaine. Tendances et alertes incluses.</p>
+      </div>
+      <div class="af-card fade-up d4">
+        <div class="af-icon">⭐</div>
+        <div class="af-title">Boost avis Google</div>
+        <p class="af-desc">Envoyez automatiquement une invitation à laisser un avis après chaque 3ème visite. +20 pts bonus.</p>
+      </div>
+      <div class="af-card fade-up d5">
+        <div class="af-icon">🔔</div>
+        <div class="af-title">Notifications push</div>
+        <p class="af-desc">Alertes scan, offres flash, upgrades de tier. Vos clients restent connectés à votre commerce.</p>
+      </div>
+      <div class="af-card fade-up d6">
+        <div class="af-icon">🌍</div>
+        <div class="af-title">Onglet Découvrir</div>
+        <p class="af-desc">Vos offres flash et publications apparaissent dans l'onglet Explore des clients autour de vous.</p>
+        <span class="af-badge">✦ Premium prioritaire</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section id="cta-section">
-  <div class="cta-glow"></div>
-  <div class="container cta-content">
+<section class="cta-section">
+  <div class="cta-section__glow"></div>
+  <div class="container cta-section__content">
     <span class="cf-label fade-up">Convaincu ?</span>
     <h2 class="cf-title fade-up d1">Essayez CoLinker.<br>C'est gratuit.</h2>
     <p class="cf-sub fade-up d2">Toutes ces fonctionnalités, sans frais pour commencer. Jusqu'à 150 clients actifs, sans engagement.</p>
@@ -469,6 +570,38 @@
   </div>
 </footer>
 
+<script>
+/* ── Heatmap builder (remplace les 50 divs inline) ── */
+(function buildHeatmap() {
+  var grid = document.getElementById('heatmapGrid');
+  if (!grid) return;
+  var days = ['Lun','Mar','Mer','Jeu','Ven'];
+  var pattern = [
+    [0.08,0.15,0.35,0.60,0.85,1.00,0.60,0.25,0.10],
+    [0.05,0.20,0.45,0.75,1.00,0.70,0.40,0.15,0.05],
+    [0.10,0.25,0.50,0.80,1.00,0.65,0.30,0.10,0.05],
+    [0.12,0.30,0.55,0.70,0.90,0.80,0.45,0.20,0.08],
+    [0.15,0.35,0.60,0.85,0.95,0.75,0.50,0.25,0.10]
+  ];
+  days.forEach(function(day, di) {
+    var row = document.createElement('div');
+    row.className = 'heatmap__row';
+    var lbl = document.createElement('div');
+    lbl.className = 'heatmap__label';
+    lbl.textContent = day;
+    row.appendChild(lbl);
+    pattern[di].forEach(function(v) {
+      var cell = document.createElement('div');
+      cell.className = 'heat-cell';
+      cell.style.background = v >= 0.95
+        ? 'var(--gold)'
+        : 'rgba(184,146,42,' + v + ')';
+      row.appendChild(cell);
+    });
+    grid.appendChild(row);
+  });
+})();
+</script>
 <script src="assets/main.js"></script>
 </body>
 </html>
