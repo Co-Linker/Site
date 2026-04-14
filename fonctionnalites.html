@@ -3,930 +3,468 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ── SEO ─────────────────────────────────────────────────── -->
   <title>Fonctionnalités CoLinker — Wallet, scanner QR, offres flash, anti-churn</title>
-  <meta name="description" content="Découvrez toutes les fonctionnalités CoLinker : wallet de fidélité digital, scanner QR, tier system, offres flash géolocalisées, pass mensuel, dashboard analytics et anti-churn automatique." />
-  <meta name="keywords" content="fonctionnalités fidélité numérique, wallet fidélité digital, scanner QR commerçant, offres flash géolocalisées, programme points fidélité, anti-churn client, dashboard commerçant" />
-  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Découvrez toutes les fonctionnalités CoLinker : wallet de fidélité digital, scanner QR, tier system, offres flash, pass mensuel, dashboard analytics et anti-churn automatique." />
   <link rel="canonical" href="https://www.colinker.fr/fonctionnalites.html" />
-  <meta property="og:title"       content="Fonctionnalités CoLinker — Tout ce qu'une app de fidélité doit faire" />
-  <meta property="og:description" content="Wallet digital, scanner QR, tier system, offres flash, pass mensuel, analytics temps réel, anti-churn automatique." />
-  <meta property="og:url"         content="https://www.colinker.fr/fonctionnalites.html" />
-  <meta property="og:site_name"   content="CoLinker" />
-  <meta property="og:locale"      content="fr_FR" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Fonctionnalités CoLinker",
-    "url": "https://www.colinker.fr/fonctionnalites.html",
-    "description": "Liste complète des fonctionnalités de l'application CoLinker pour commerçants et clients",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.colinker.fr/" },
-        { "@type": "ListItem", "position": 2, "name": "Fonctionnalités", "item": "https://www.colinker.fr/fonctionnalites.html" }
-      ]
-    }
-  }
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
-
   <style>
-    /* ── PAGE HERO ─────────────────────────────────────────── */
-    #page-hero {
-      padding: 140px 0 80px;
-      background: var(--bg-main);
-      text-align: center;
-    }
-    .ph-breadcrumb {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; font-weight: 300; color: var(--text-tertiary);
-      margin-bottom: 28px;
-    }
+    #page-hero { padding: 148px 0 80px; background: var(--bg-main); text-align: center; position: relative; overflow: hidden; }
+    .hero-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(184,146,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .ph-breadcrumb { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 300; color: var(--text-tertiary); margin-bottom: 24px; }
     .ph-breadcrumb a { color: var(--text-secondary); transition: color .2s; }
     .ph-breadcrumb a:hover { color: var(--text-primary); }
-    .ph-title {
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: clamp(38px, 5vw, 62px);
-      color: var(--text-primary); line-height: 1.12;
-      margin-bottom: 20px;
-    }
-    .ph-sub {
-      font-size: 18px; font-weight: 300; color: var(--text-secondary);
-      max-width: 540px; margin: 0 auto 40px;
-    }
-    .ph-tabs {
-      display: inline-flex; gap: 0;
-      background: var(--surface);
-      border: 0.5px solid var(--border);
-      border-radius: var(--r-pill);
-      padding: 4px;
-    }
-    .ph-tab {
-      font-size: 13px; font-weight: 600;
-      padding: 8px 22px;
-      border-radius: var(--r-pill);
-      color: var(--text-secondary);
-      transition: background .25s, color .25s;
-      cursor: pointer;
-    }
-    .ph-tab.active, .ph-tab:hover {
-      background: var(--dark-bar); color: #fff;
-    }
+    .ph-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(40px, 5.5vw, 66px); color: var(--text-primary); line-height: 1.1; margin-bottom: 20px; }
+    .ph-sub { font-size: 18px; font-weight: 300; color: var(--text-secondary); max-width: 600px; margin: 0 auto 44px; line-height: 1.7; }
+    .ph-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .ph-chip { display: flex; align-items: center; gap: 7px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 100px; padding: 8px 16px; font-size: 13px; font-weight: 300; color: var(--text-secondary); transition: all .2s; }
+    .ph-chip:hover { border-color: var(--border-gold); color: var(--text-primary); background: var(--gold-bg); }
+    .ph-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
 
-    /* ── CLIENT FEATURES ───────────────────────────────────── */
-    #client-features { background: var(--bg-main); padding-top: 16px; }
+    /* FEATURE SECTIONS */
+    .feature-section { padding: 96px 0; }
+    .feature-section:nth-child(odd) { background: var(--bg-main); }
+    .feature-section:nth-child(even) { background: var(--surface); }
+    .fs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .fs-grid.reversed { direction: rtl; }
+    .fs-grid.reversed > * { direction: ltr; }
+    .fs-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--gold); background: var(--gold-bg); border: 0.5px solid var(--border-gold); border-radius: 100px; padding: 5px 14px; margin-bottom: 18px; }
+    .fs-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 600; line-height: 1.2; color: var(--text-primary); margin-bottom: 16px; }
+    .fs-title em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--gold); }
+    .fs-desc { font-size: 16px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; margin-bottom: 24px; }
+    .fs-bullets { display: flex; flex-direction: column; gap: 12px; }
+    .fs-bullet { display: flex; align-items: flex-start; gap: 12px; }
+    .fs-bullet-icon { width: 22px; height: 22px; border-radius: 50%; background: var(--gold-bg); border: 0.5px solid var(--border-gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .fs-bullet-icon svg { width: 10px; height: 10px; }
+    .fs-bullet-text { font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.55; }
+    .fs-bullet-text strong { font-weight: 600; color: var(--text-primary); }
 
-    .feature-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-      padding: 72px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .feature-block:first-of-type { padding-top: 32px; }
-    .feature-block:last-of-type  { border-bottom: none; }
-    .feature-block.rev { direction: rtl; }
-    .feature-block.rev > * { direction: ltr; }
-
-    .fb-text {}
-    .fb-icon-wrap {
-      width: 52px; height: 52px;
-      border-radius: 16px;
-      background: var(--gold-bg);
-      border: 0.5px solid var(--border-gold);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-    }
-    .fb-title {
-      font-weight: 600; font-size: clamp(22px, 2.8vw, 30px);
-      line-height: 1.25; margin-bottom: 14px;
-    }
-    .fb-desc {
-      font-size: 16px; font-weight: 300; color: var(--text-secondary);
-      line-height: 1.7; margin-bottom: 24px;
-    }
-    .fb-points { display: flex; flex-direction: column; gap: 11px; }
-    .fb-point  {
-      display: flex; align-items: center; gap: 11px;
-      font-size: 14px; font-weight: 300; color: var(--text-secondary);
-    }
-    .fb-point-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-
-    /* ── PHONE VISUALS ─────────────────────────────────────── */
+    /* PHONE VISUAL VARIANTS */
     .phone-visual { display: flex; justify-content: center; }
 
     /* Wallet screen */
-    .app-wallet-screen { padding: 0 12px; flex: 1; overflow: hidden; }
-    .wallet-header { padding: 10px 4px 8px; }
-    .wallet-title { font-size: 16px; font-weight: 600; color: var(--text-primary); }
-    .wallet-subtitle { font-size: 10px; font-weight: 300; color: var(--text-secondary); }
-    .wallet-card-list { display: flex; flex-direction: column; gap: 10px; }
+    .wallet-scroll { flex: 1; overflow: hidden; padding: 0 12px 8px; display: flex; flex-direction: column; gap: 10px; }
+    .wallet-header { padding: 4px 14px 8px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+    .wallet-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .offer-row { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 10px; }
+    .offer-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--gold-bg); border: 0.5px solid var(--border-gold); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .offer-title { font-size: 11px; font-weight: 600; color: var(--text-primary); }
+    .offer-meta { font-size: 9px; font-weight: 300; color: var(--text-secondary); }
+    .offer-pts { margin-left: auto; font-size: 10px; font-weight: 600; color: var(--gold); white-space: nowrap; }
 
-    /* Silver card */
-    .lc-silver {
-      background: linear-gradient(145deg, #2a2a3a 0%, #1e1e2e 100%);
-    }
-    .lc-silver .lc-tier { background: #6e6e8a; }
-    .lc-silver .lc-pts-num { color: #a8b4d0; }
-    .lc-silver .lc-progress-bar { background: #7b8bb5; }
-    .lc-silver .lc-stamp.on { background: #7b8bb5; border-color: #7b8bb5; }
+    /* Tier screen */
+    .tier-card { margin: 0 12px; border-radius: 14px; padding: 14px; flex-shrink: 0; }
+    .tier-standard { background: rgba(26,26,26,0.06); }
+    .tier-bronze { background: linear-gradient(135deg, rgba(180,80,20,.12), rgba(180,80,20,.04)); border: 0.5px solid rgba(180,80,20,.2); }
+    .tier-gold { background: linear-gradient(135deg, rgba(184,146,42,.18), rgba(184,146,42,.06)); border: 0.5px solid var(--border-gold); }
+    .tier-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .tier-pts { font-size: 10px; font-weight: 300; color: var(--text-secondary); margin-top: 2px; }
+    .tier-bar { height: 3px; background: var(--border); border-radius: 100px; margin-top: 8px; overflow: hidden; }
+    .tier-fill { height: 100%; border-radius: 100px; background: var(--gold); }
 
-    /* Tier pill showcase */
-    .tier-showcase {
-      background: var(--surface);
-      border: 0.5px solid var(--border-gold);
-      border-radius: var(--r-xl);
-      padding: 28px;
-      box-shadow: var(--shadow-card);
-    }
-    .tier-row { display: flex; flex-direction: column; gap: 14px; }
-    .tier-item {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 16px;
-      border-radius: var(--r-card);
-      border: 0.5px solid var(--border);
-    }
-    .ti-left { display: flex; align-items: center; gap: 12px; }
-    .ti-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .ti-name { font-weight: 600; font-size: 14px; }
-    .ti-range{ font-size: 11px; font-weight: 300; color: var(--text-secondary); margin-top: 2px; }
-    .ti-perk { font-size: 12px; font-weight: 300; color: var(--text-secondary); }
+    /* Flash screen */
+    .flash-card { margin: 0 12px; background: linear-gradient(135deg, #1A1A1A, #251d0f); border-radius: 14px; padding: 14px; flex-shrink: 0; position: relative; overflow: hidden; }
+    .flash-badge { display: inline-block; background: var(--red); color: #fff; font-size: 9px; font-weight: 600; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px; animation: pulse-dot 1.5s ease-in-out infinite; }
+    .flash-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .flash-discount { font-size: 32px; font-weight: 600; color: var(--gold-light); line-height: 1; letter-spacing: -1px; }
+    .flash-timer { font-size: 9px; font-weight: 300; color: rgba(255,255,255,.45); margin-top: 4px; }
 
-    /* Flash offer widget */
-    .flash-widget {
-      background: var(--surface);
-      border: 0.5px solid var(--border-gold);
-      border-radius: var(--r-xl);
-      padding: 24px;
-      box-shadow: var(--shadow-card);
-    }
-    .fw-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-    .fw-title  { font-weight: 600; font-size: 14px; }
-    .fw-count  { font-size: 12px; font-weight: 300; color: var(--text-secondary); }
-    .fw-list   { display: flex; flex-direction: column; gap: 12px; }
-    .fw-item {
-      display: flex; align-items: center; gap: 14px;
-      padding: 12px 14px;
-      background: var(--bg-warm);
-      border-radius: var(--r-card);
-    }
-    .fw-avatar {
-      width: 40px; height: 40px; border-radius: 12px;
-      background: var(--dark-bar);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .fw-avatar span { font-size: 18px; }
-    .fw-body { flex: 1; }
-    .fw-name { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
-    .fw-val  { font-size: 12px; font-weight: 300; color: var(--text-secondary); }
-    .fw-timer{
-      font-size: 11px; font-weight: 600;
-      color: var(--red);
-      background: rgba(255,59,48,.07);
-      padding: 4px 10px; border-radius: 100px;
-      white-space: nowrap;
-    }
-    .fw-timer.soon { color: var(--orange); background: rgba(255,149,0,.07); }
+    /* Analytics screen */
+    .analytics-scroll { flex: 1; overflow: hidden; padding: 8px 12px 0; display: flex; flex-direction: column; gap: 8px; }
+    .analytics-kpi { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .analytics-chip { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 10px; }
+    .analytics-val { font-size: 16px; font-weight: 600; color: var(--text-primary); line-height: 1; }
+    .analytics-lbl { font-size: 8px; font-weight: 300; color: var(--text-secondary); margin-top: 2px; }
+    .heat-row { display: flex; gap: 3px; }
+    .heat-cell { width: 10px; height: 10px; border-radius: 2px; }
 
-    /* Instant gagnant wheel */
-    .wheel-widget {
-      background: var(--surface);
-      border: 0.5px solid var(--border-gold);
-      border-radius: var(--r-xl);
-      padding: 28px;
-      box-shadow: var(--shadow-card);
-      text-align: center;
-    }
-    .wheel-outer {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      background: conic-gradient(
-        var(--gold)       0deg 60deg,
-        var(--gold-bg)    60deg 120deg,
-        var(--gold-light) 120deg 180deg,
-        var(--gold-pale)  180deg 240deg,
-        var(--gold-xlight)240deg 300deg,
-        var(--bg-warm)    300deg 360deg
-      );
-      margin: 0 auto 18px;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(184,146,42,.2);
-    }
-    .wheel-center {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      background: var(--surface);
-      box-shadow: 0 2px 8px rgba(0,0,0,.15);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .wheel-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
-    .wheel-sub   { font-size: 13px; font-weight: 300; color: var(--text-secondary); margin-bottom: 18px; }
-    .wheel-prizes {
-      display: flex; flex-direction: column; gap: 8px;
-      text-align: left;
-    }
-    .wp-item {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 8px 12px;
-      background: var(--bg-warm);
-      border-radius: 9px;
-    }
-    .wp-label { font-size: 12px; font-weight: 300; color: var(--text-primary); }
-    .wp-prob  { font-size: 11px; font-weight: 600; color: var(--text-secondary); }
+    /* ALL FEATURES GRID */
+    #all-features { background: var(--bg-main); }
+    .af-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .af-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r-xl); padding: 24px; transition: all .3s cubic-bezier(0.22,1,0.36,1); }
+    .af-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); border-color: var(--border-gold); }
+    .af-icon { font-size: 26px; margin-bottom: 12px; }
+    .af-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+    .af-desc { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.6; }
+    .af-badge { display: inline-block; font-size: 10px; font-weight: 600; color: var(--gold); background: var(--gold-bg); border: 0.5px solid var(--border-gold); border-radius: 100px; padding: 2px 8px; margin-top: 10px; }
 
-    /* Pass mensuel */
-    .pass-widget {
-      background: var(--surface);
-      border: 0.5px solid var(--border-gold);
-      border-radius: var(--r-xl);
-      padding: 24px;
-      box-shadow: var(--shadow-card);
-    }
-    .pw-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-    .pw-shop { font-weight: 600; font-size: 15px; }
-    .pw-price{
-      font-size: 13px; font-weight: 600;
-      color: var(--gold);
-      background: var(--gold-bg);
-      padding: 3px 12px; border-radius: 100px;
-      border: 0.5px solid var(--border-gold);
-    }
-    .pw-perks { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
-    .pw-perk  { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 300; color: var(--text-primary); }
-    .pw-check {
-      width: 18px; height: 18px; border-radius: 50%;
-      background: rgba(184,146,42,.12);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .pw-progress-wrap { margin-bottom: 14px; }
-    .pw-progress-label { display: flex; justify-content: space-between; font-size: 11px; font-weight: 300; color: var(--text-secondary); margin-bottom: 5px; }
-    .pw-progress { height: 4px; background: var(--border); border-radius: 100px; overflow: hidden; }
-    .pw-progress-bar { height: 100%; background: var(--gold); border-radius: 100px; }
+    /* CTA */
+    #cta-section { background: var(--dark-bar); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(184,146,42,0.12) 0%, transparent 65%); }
+    .cta-content { position: relative; z-index: 1; }
+    .cf-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing:.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .cf-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(36px,5vw,60px); color: #fff; line-height: 1.1; margin-bottom: 20px; }
+    .cf-sub { font-size: 17px; font-weight: 300; color: rgba(255,255,255,.5); max-width: 500px; margin: 0 auto 40px; line-height: 1.7; }
+    .cf-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
-    /* Explore map widget */
-    .explore-widget {
-      background: var(--surface);
-      border: 0.5px solid var(--border-gold);
-      border-radius: var(--r-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
+    @media (max-width: 860px) {
+      .fs-grid, .fs-grid.reversed { grid-template-columns: 1fr; direction: ltr; }
+      .af-grid { grid-template-columns: 1fr 1fr; }
     }
-    .explore-map {
-      height: 180px;
-      background:
-        radial-gradient(circle at 40% 50%, rgba(184,146,42,.08) 0%, transparent 50%),
-        linear-gradient(135deg, #e8f4e8 0%, #eef2e8 50%, #e8ede8 100%);
-      position: relative;
-    }
-    .map-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    .map-road-h {
-      position: absolute; left: 0; right: 0;
-      height: 3px; background: rgba(255,255,255,.7);
-    }
-    .map-road-v {
-      position: absolute; top: 0; bottom: 0;
-      width: 3px; background: rgba(255,255,255,.7);
-    }
-    .map-pin {
-      position: absolute;
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 2.5px solid #fff;
-      box-shadow: 0 2px 8px rgba(184,146,42,.4);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .map-pin::after {
-      content: ''; position: absolute; bottom: -6px; left: 50%;
-      transform: translateX(-50%);
-      width: 0; height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 7px solid var(--gold);
-    }
-    .map-pin.user {
-      background: var(--blue); border-color: #fff;
-    }
-    .map-pin.user::after { border-top-color: var(--blue); }
-    .explore-list { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
-    .el-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 8px 10px;
-      background: var(--bg-warm);
-      border-radius: 9px;
-    }
-    .el-cat { font-size: 14px; width: 22px; text-align: center; flex-shrink: 0; }
-    .el-name { font-size: 12px; font-weight: 600; flex: 1; }
-    .el-dist { font-size: 10px; font-weight: 300; color: var(--text-secondary); }
-    .el-stars{ font-size: 10px; color: var(--gold); }
-
-    /* ── MERCHANT FEATURES ─────────────────────────────────── */
-    #merchant-features { background: var(--bg-warm); }
-
-    /* Dashboard phone screen */
-    .dash-phone-screen { display: flex; flex-direction: column; height: 100%; }
-    .dash-app-header {
-      background: var(--dark-bar);
-      padding: 10px 16px 12px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-shrink: 0;
-    }
-    .dash-title { font-size: 14px; font-weight: 600; color: #fff; }
-    .dash-date  { font-size: 9px; font-weight: 300; color: rgba(255,255,255,.5); margin-top: 1px; }
-    .dash-flash-btn {
-      background: var(--gold); color: #fff;
-      font-size: 10px; font-weight: 600;
-      padding: 5px 12px; border-radius: 100px;
-    }
-    .dash-stats-row {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 8px; padding: 10px 12px; flex-shrink: 0;
-    }
-    .ds-card {
-      background: var(--surface);
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 12px;
-    }
-    .ds-val { font-size: 22px; font-weight: 600; color: var(--text-primary); line-height: 1; }
-    .ds-label { font-size: 9px; font-weight: 300; color: var(--text-secondary); margin-top: 3px; }
-    .ds-delta { display: inline-flex; align-items: center; gap: 2px; font-size: 9px; font-weight: 600; color: var(--green); background: rgba(48,209,88,.08); padding: 1px 6px; border-radius: 100px; margin-top: 4px; }
-    .ds-delta.down { color: var(--red); background: rgba(255,59,48,.08); }
-    .dash-chart-wrap {
-      padding: 0 12px 8px;
-      flex-shrink: 0;
-    }
-    .dw-label2 { font-size: 9px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-    .dw-chart2 {
-      display: flex; align-items: flex-end; gap: 4px; height: 52px;
-    }
-    .dw-bw { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 3px; }
-    .dw-b  {
-      width: 100%; background: var(--gold-xlight); border-radius: 3px 3px 0 0;
-      transition: height 1.2s cubic-bezier(.22,1,.36,1);
-    }
-    .dw-b.act { background: var(--gold); }
-    .dw-bl { font-size: 7.5px; font-weight: 300; color: var(--text-tertiary); }
-    .dash-recent {
-      flex: 1; padding: 0 12px; overflow: hidden;
-    }
-    .dr-title { font-size: 9px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-    .dr-list  { display: flex; flex-direction: column; gap: 5px; }
-    .dr-item  {
-      display: flex; align-items: center; gap: 8px;
-      padding: 6px 8px;
-      background: var(--surface);
-      border-radius: 8px;
-    }
-    .dr-av { width: 22px; height: 22px; border-radius: 50%; background: var(--gold-bg); display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 600; color: var(--gold); flex-shrink: 0; }
-    .dr-name { font-size: 10px; font-weight: 600; flex: 1; }
-    .dr-pts  { font-size: 9px; font-weight: 600; color: var(--gold); }
-    .dr-time { font-size: 8px; font-weight: 300; color: var(--text-secondary); }
-
-    /* Scanner screen */
-    .scan-phone-screen { display: flex; flex-direction: column; }
-    .scan-header {
-      padding: 10px 16px 8px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-shrink: 0;
-    }
-    .scan-title { font-size: 14px; font-weight: 600; }
-    .scan-mode-toggle {
-      display: flex; gap: 0;
-      background: var(--bg-warm);
-      border: 0.5px solid var(--border);
-      border-radius: 100px; padding: 2px;
-    }
-    .smt-btn { font-size: 9.5px; font-weight: 600; padding: 4px 11px; border-radius: 100px; color: var(--text-secondary); }
-    .smt-btn.active { background: var(--dark-bar); color: #fff; }
-    .scan-qr-area {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      background: #0e0e0e; position: relative; overflow: hidden;
-      flex-shrink: 0; height: 200px;
-    }
-    .scan-overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,.55);
-    }
-    .scan-frame {
-      position: absolute;
-      width: 130px; height: 130px;
-      z-index: 2;
-    }
-    .scan-corner {
-      position: absolute;
-      width: 20px; height: 20px;
-    }
-    .scan-corner::before, .scan-corner::after { content: ''; position: absolute; background: var(--gold); border-radius: 1px; }
-    .sc-tl::before { width: 100%; height: 3px; top:0; left:0; }
-    .sc-tl::after  { width: 3px; height: 100%; top:0; left:0; }
-    .sc-tr::before { width: 100%; height: 3px; top:0; right:0; }
-    .sc-tr::after  { width: 3px; height: 100%; top:0; right:0; }
-    .sc-bl::before { width: 100%; height: 3px; bottom:0; left:0; }
-    .sc-bl::after  { width: 3px; height: 100%; bottom:0; left:0; }
-    .sc-br::before { width: 100%; height: 3px; bottom:0; right:0; }
-    .sc-br::after  { width: 3px; height: 100%; bottom:0; right:0; }
-    .scan-corner.sc-tl { top: 0; left: 0; }
-    .scan-corner.sc-tr { top: 0; right: 0; }
-    .scan-corner.sc-bl { bottom: 0; left: 0; }
-    .scan-corner.sc-br { bottom: 0; right: 0; }
-    .scan-laser {
-      position: absolute; z-index: 3;
-      width: 130px; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      animation: scan-laser 2s ease-in-out infinite;
-      top: calc(50% - 65px);
-    }
-    @keyframes scan-laser { 0%,100% { top: calc(50% - 65px); } 50% { top: calc(50% + 63px); } }
-
-    .scan-result {
-      padding: 12px;
-      flex-shrink: 0;
-    }
-    .sr-card {
-      background: var(--gold-bg);
-      border: 0.5px solid var(--border-gold);
-      border-radius: 12px;
-      padding: 12px 14px;
-    }
-    .sr-row   { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-    .sr-av    { width: 34px; height: 34px; border-radius: 50%; background: var(--dark-bar); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--gold); flex-shrink: 0; }
-    .sr-name  { font-weight: 600; font-size: 13px; }
-    .sr-sub   { font-size: 10px; font-weight: 300; color: var(--text-secondary); }
-    .sr-badges{ display: flex; gap: 6px; flex-wrap: wrap; }
-    .otp-area {
-      padding: 0 12px 10px; flex-shrink: 0;
-    }
-    .otp-label { font-size: 9px; font-weight: 300; color: var(--text-secondary); text-align: center; margin-bottom: 5px; text-transform: uppercase; letter-spacing: .06em; }
-    .otp-code-big { font-size: 26px; font-weight: 600; letter-spacing: .18em; text-align: center; color: var(--text-primary); }
-
-    /* ── RESPONSIVE ─────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .feature-block { grid-template-columns: 1fr; gap: 40px; }
-      .feature-block.rev { direction: ltr; }
-    }
-    @media (max-width: 768px) {
-      #page-hero { padding: 120px 0 60px; }
+    @media (max-width: 480px) {
+      .af-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
+<nav id="nav" role="navigation">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><span class="co">Co</span><span class="linker">Linker</span></a>
+      <a href="./" class="nav-logo"><span class="co">Co</span><span class="linker">Linker</span></a>
       <div class="nav-links">
         <a href="fonctionnalites.html" class="active">Fonctionnalités</a>
-        <a href="tarifs.html">Tarifs</a>
         <a href="commercants.html">Commerçants</a>
+        <a href="tarifs.html">Tarifs</a>
         <a href="telecharger.html">Télécharger</a>
       </div>
       <div class="nav-right">
-        <a href="telecharger.html" class="btn btn-dark">Télécharger gratuitement</a>
-        <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <a href="telecharger.html" class="btn btn-gold" style="padding:10px 20px;font-size:14px">Commencer</a>
+        <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false"><span class="burger-line"></span><span class="burger-line"></span><span class="burger-line"></span></button>
       </div>
     </div>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="fonctionnalites.html" class="active" onclick="closeMobile()">Fonctionnalités</a>
-  <a href="tarifs.html" onclick="closeMobile()">Tarifs</a>
-  <a href="commercants.html" onclick="closeMobile()">Commerçants</a>
-  <a href="telecharger.html" onclick="closeMobile()">Télécharger</a>
-  <a href="telecharger.html" class="btn btn-dark" onclick="closeMobile()">Télécharger gratuitement</a>
+  <a href="fonctionnalites.html" onclick="closeMobile()">Fonctionnalités</a>
+  <a href="commercants.html"     onclick="closeMobile()">Commerçants</a>
+  <a href="tarifs.html"          onclick="closeMobile()">Tarifs</a>
+  <a href="telecharger.html"     onclick="closeMobile()">Télécharger</a>
+  <a href="telecharger.html" class="btn btn-gold" onclick="closeMobile()">Commencer gratuitement</a>
 </div>
 
-
 <main>
-<!-- PAGE HERO -->
+
+<!-- HERO -->
 <section id="page-hero">
-  <div class="container">
-    <nav class="ph-breadcrumb" aria-label="Fil d'Ariane">
-      <a href="index.html">Accueil</a>
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      <span>Fonctionnalités</span>
-    </nav>
-    <div class="tag-pill fade-up"><span class="dot"></span>Pour clients et commerçants</div>
-    <h1 class="ph-title fade-up d1">Tout ce qu'une app de fidélité<br>doit vraiment faire</h1>
-    <p class="ph-sub fade-up d2">Wallet digital, scanner QR, tier system, offres flash, analytics temps réel et bien plus — sans complexité inutile.</p>
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="ph-breadcrumb fade-up"><a href="./">Accueil</a><span>›</span><span>Fonctionnalités</span></div>
+    <div class="tag-pill fade-up d1"><span class="dot"></span>Tout ce qu'il faut</div>
+    <h1 class="ph-title fade-up d2">Une app de fidélité<br>qui <em>fait vraiment</em> le travail.</h1>
+    <p class="ph-sub fade-up d3">Wallet digital, scanner QR, tiers de fidélité, offres flash, analytics avancés. Tout ce dont votre commerce a besoin, dans une seule app.</p>
+    <div class="ph-chips fade-up d4">
+      <a href="#wallet" class="ph-chip"><span class="dot"></span>Wallet digital</a>
+      <a href="#scanner" class="ph-chip"><span class="dot"></span>Scanner QR</a>
+      <a href="#tiers" class="ph-chip"><span class="dot"></span>Tiers de fidélité</a>
+      <a href="#flash" class="ph-chip"><span class="dot"></span>Offres Flash</a>
+      <a href="#analytics" class="ph-chip"><span class="dot"></span>Analytics</a>
+      <a href="#pass" class="ph-chip"><span class="dot"></span>Pass mensuel</a>
+    </div>
   </div>
 </section>
 
-
-<!-- CLIENT FEATURES -->
-<section id="client-features" aria-labelledby="cf-title">
+<!-- WALLET -->
+<section id="wallet" class="feature-section">
   <div class="container">
-    <header class="section-header">
-      <div class="section-label fade-up">Pour vos clients</div>
-      <h2 class="section-title fade-up d1" id="cf-title">Une expérience réinventée<br>à chaque visite</h2>
-    </header>
-
-    <!-- Wallet digital -->
-    <div class="feature-block">
-      <div class="fb-text fade-up">
-        <div class="fb-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="16" rx="3.5" stroke="#B8922A" stroke-width="1.5"/><path d="M2 10h20" stroke="#B8922A" stroke-width="1.5"/><circle cx="17" cy="15" r="1.8" fill="#B8922A"/><path d="M6 3h6" stroke="#B8922A" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-        <h2 class="fb-title">Wallet de fidélité digital</h2>
-        <p class="fb-desc">Toutes les cartes de fidélité dans un seul endroit, accessibles en 2 secondes. Finies les cartes perdues, oubliées ou chiffonnées au fond du sac.</p>
-        <ul class="fb-points">
-          <li class="fb-point"><span class="fb-point-dot"></span>Triées automatiquement par fréquence de visite</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Synchronisation instantanée à chaque scan</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Historique complet des points et récompenses</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Compatible iOS Wallet et Google Pay à venir</li>
-        </ul>
+    <div class="fs-grid">
+      <div>
+        <div class="fs-tag fade-left">Pour les clients</div>
+        <h2 class="fs-title fade-left d1">Wallet de fidélité<br><em>tout-en-un</em></h2>
+        <p class="fs-desc fade-left d2">Fini les cartes papier égarées. Toutes les cartes de fidélité de vos commerces préférés dans une seule application, toujours dans votre poche.</p>
+        <div class="fs-bullets fade-left d3">
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Toutes vos cartes</strong> dans une seule app. Plus jamais de carte oubliée.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Points automatiques</strong> à chaque scan. Aucune action requise de votre part.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Récompenses disponibles</strong> dès que vous atteignez le seuil. Échange en 1 tap.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Historique complet</strong> de vos visites et points. Transparence totale.</p></div>
+        </div>
       </div>
-      <div class="phone-visual fade-up d2">
-        <div class="float"><div class="phone-device" aria-hidden="true">
+      <div class="phone-visual fade-right d2">
+        <div class="phone-device float">
           <div class="phone-screen">
             <div class="dynamic-island"></div>
-            <div class="status-bar">
-              <span class="status-time">9:41</span>
-              <div class="status-icons">
-                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6.5" width="2" height="3.5" rx=".5" fill="#1A1A1A"/><rect x="3" y="4.5" width="2" height="5.5" rx=".5" fill="#1A1A1A"/><rect x="6" y="2.5" width="2" height="7.5" rx=".5" fill="#1A1A1A"/><rect x="9" y="0" width="2" height="10" rx=".5" fill="#1A1A1A"/></svg>
-                <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><rect x=".5" y=".5" width="17" height="9" rx="2.5" stroke="#1A1A1A" stroke-opacity=".35"/><rect x="2" y="2" width="12.5" height="6" rx="1.5" fill="#1A1A1A"/><path d="M18.5 3v4c.8-.4 1.2-1 1.2-2s-.4-1.6-1.2-2z" fill="#1A1A1A" opacity=".4"/></svg>
+            <div class="status-bar"><span class="status-time">9:41</span></div>
+            <div class="phone-content">
+              <div class="wallet-header"><div class="wallet-title">Mon Wallet</div><span class="metric-chip chip-gold">3 cartes</span></div>
+              <div class="wallet-scroll">
+                <div class="loyalty-card">
+                  <div class="lc-row"><div class="lc-brand">Le Café du Coin</div><div class="lc-tier">Gold</div></div>
+                  <div class="lc-pts-num">840 <span style="font-size:12px;font-weight:300;opacity:.6">pts</span></div>
+                  <div class="lc-progress"><div class="lc-progress-bar" style="width:68%"></div></div>
+                  <div class="lc-stamps"><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp"></div><div class="lc-stamp"></div><div class="lc-stamp"></div></div>
+                </div>
+                <div style="font-size:10px;font-weight:600;color:var(--text-primary)">Récompenses disponibles</div>
+                <div class="offer-row"><div class="offer-icon">☕</div><div><div class="offer-title">Café offert</div><div class="offer-meta">100 pts requis · Disponible !</div></div><div class="offer-pts" style="color:var(--green)">Échanger →</div></div>
+                <div class="offer-row"><div class="offer-icon">🥐</div><div><div class="offer-title">Viennoiserie</div><div class="offer-meta">150 pts · Il vous en faut 50 de plus</div></div><div class="offer-pts">150 pts</div></div>
+                <div style="font-size:10px;font-weight:600;color:var(--text-primary)">Mes autres cartes</div>
+                <div class="offer-row" style="background:var(--gold-bg);border-color:var(--border-gold)"><div class="offer-icon" style="background:rgba(48,209,88,0.1)">🌿</div><div><div class="offer-title">Bio du Quartier</div><div class="offer-meta">Silver · 320 pts</div></div><div class="offer-pts">320 pts</div></div>
               </div>
             </div>
-            <div class="app-wallet-screen">
-              <div class="wallet-header"><div class="wallet-title">Mes cartes</div><div class="wallet-subtitle">3 commerces • 1 560 pts au total</div></div>
-              <div class="wallet-card-list">
-                <div class="loyalty-card">
-                  <div class="lc-row"><span class="lc-brand">Café Lumière</span><span class="lc-tier">Gold</span></div>
-                  <div class="lc-pts-num">840</div>
-                  <div class="lc-pts-sub">pts · prochain café à 1 000</div>
-                  <div class="lc-progress"><div class="lc-progress-bar" style="width:84%"></div></div>
-                  <div class="lc-stamps" style="margin-top:9px">
-                    <div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp on"></div><div class="lc-stamp"></div><div class="lc-stamp"></div><div class="lc-stamp"></div><div class="lc-stamp"></div>
+            <div class="tab-bar">
+              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10.5l5-5 4 4 5-5" stroke="var(--text-tertiary)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tab-label">Explore</div></div>
+              <div class="tab-item active"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="3" stroke="var(--gold)" stroke-width="1.4"/><path d="M3 8h14" stroke="var(--gold)" stroke-width="1.4"/></svg></div><div class="tab-label" style="color:var(--gold);font-weight:600">Wallet</div></div>
+              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="var(--text-tertiary)" stroke-width="1.4"/><path d="M3 17c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="var(--text-tertiary)" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="tab-label">Profil</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCANNER -->
+<section id="scanner" class="feature-section">
+  <div class="container">
+    <div class="fs-grid reversed">
+      <div>
+        <div class="fs-tag fade-right">Pour les commerçants</div>
+        <h2 class="fs-title fade-right d1">Scanner QR<br><em>instantané</em></h2>
+        <p class="fs-desc fade-right d2">3 secondes par client. Le commerçant scanne, les points s'ajoutent, le client reçoit une notification. Simple, rapide, sans erreur.</p>
+        <div class="fs-bullets fade-right d3">
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>3 secondes</strong> par scan. Plus rapide que de tampionner une carte papier.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Fonctionne hors ligne.</strong> Pas de connexion ? Les scans sont synchronisés dès le retour.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Profil client visible</strong> au scan. Historique, tier, dernière visite.</p></div>
+        </div>
+      </div>
+      <div class="phone-visual fade-left d2">
+        <div class="phone-device float" style="animation-delay:.3s">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar"><span class="status-time">9:41</span></div>
+            <div class="phone-content" style="padding:12px;gap:10px;display:flex;flex-direction:column">
+              <div style="background:#1A1A1A;border-radius:20px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden">
+                <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(184,146,42,0.15) 0%,transparent 65%)"></div>
+                <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em">Scanner QR Client</div>
+                <div style="width:110px;height:110px;border-radius:20px;border:2px solid rgba(184,146,42,0.5);position:relative;display:flex;align-items:center;justify-content:center">
+                  <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:3px solid var(--gold);border-left:3px solid var(--gold);border-radius:4px 0 0 0"></div>
+                  <div style="position:absolute;top:-1px;right:-1px;width:18px;height:18px;border-top:3px solid var(--gold);border-right:3px solid var(--gold);border-radius:0 4px 0 0"></div>
+                  <div style="position:absolute;bottom:-1px;left:-1px;width:18px;height:18px;border-bottom:3px solid var(--gold);border-left:3px solid var(--gold);border-radius:0 0 0 4px"></div>
+                  <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:3px solid var(--gold);border-right:3px solid var(--gold);border-radius:0 0 4px 0"></div>
+                  <div class="qr-grid" id="qrGrid" style="width:60px;gap:2px"></div>
+                </div>
+                <div style="position:absolute;left:50%;transform:translateX(-50%);width:110px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scan-line 2s ease-in-out infinite alternate;border-radius:2px;opacity:.8"></div>
+                <div style="font-size:9px;font-weight:300;color:rgba(255,255,255,.3)">Approchez le QR code</div>
+              </div>
+              <div style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.25);border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px">
+                <div style="width:36px;height:36px;border-radius:50%;background:rgba(48,209,88,0.15);display:flex;align-items:center;justify-content:center;font-size:18px">✓</div>
+                <div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--text-primary)">Marie Dupont · Gold</div><div style="font-size:10px;font-weight:300;color:var(--text-secondary)">12 visites · 840 pts</div></div>
+                <div style="font-size:20px;font-weight:600;color:var(--gold)">+10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section id="tiers" class="feature-section">
+  <div class="container">
+    <div class="fs-grid">
+      <div>
+        <div class="fs-tag fade-left">Gamification</div>
+        <h2 class="fs-title fade-left d1">Tiers de fidélité<br><em>progressifs</em></h2>
+        <p class="fs-desc fade-left d2">Standard, Bronze, Gold, Platinum. Un système de progression qui rend vos clients accros. Plus ils visitent, plus ils montent, plus ils reviennent.</p>
+        <div class="fs-bullets fade-left d3">
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>4 niveaux</strong> : Standard → Bronze → Gold → Platinum.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Avantages exclusifs</strong> par palier. Vos VIP se sentent vraiment VIP.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Progression visible</strong> dans le wallet. La barre de progression qui motive.</p></div>
+        </div>
+      </div>
+      <div class="phone-visual fade-right d2">
+        <div class="phone-device float" style="animation-delay:.6s">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar"><span class="status-time">9:41</span></div>
+            <div class="phone-content" style="padding:12px;gap:8px;display:flex;flex-direction:column">
+              <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Vos niveaux de fidélité</div>
+              <div class="tier-card tier-gold">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <div class="tier-title">🏆 Gold — Actuel</div>
+                  <span class="metric-chip chip-gold" style="font-size:9px;padding:2px 8px">840 pts</span>
+                </div>
+                <div class="tier-pts">+20 pts/visite · Café offert tous les 10 scans</div>
+                <div class="tier-bar"><div class="tier-fill" style="width:68%"></div></div>
+                <div style="font-size:8px;font-weight:300;color:var(--text-secondary);margin-top:4px">160 pts avant Platinum</div>
+              </div>
+              <div class="tier-card tier-standard" style="opacity:.7">
+                <div style="display:flex;justify-content:space-between"><div class="tier-title">⭐ Standard</div><span style="font-size:9px;color:var(--green)">✓ Atteint</span></div>
+                <div class="tier-pts">+10 pts/visite</div>
+              </div>
+              <div class="tier-card tier-bronze" style="opacity:.7">
+                <div style="display:flex;justify-content:space-between"><div class="tier-title">🥉 Bronze</div><span style="font-size:9px;color:var(--green)">✓ Atteint</span></div>
+                <div class="tier-pts">+15 pts/visite · Réductions exclusives</div>
+              </div>
+              <div style="background:linear-gradient(135deg,rgba(200,180,100,.12),rgba(200,180,100,.04));border:0.5px solid rgba(200,180,100,.25);border-radius:14px;padding:14px">
+                <div style="display:flex;justify-content:space-between;align-items:center"><div class="tier-title">💎 Platinum</div><span style="font-size:9px;color:var(--text-tertiary)">160 pts →</span></div>
+                <div class="tier-pts">+30 pts/visite · Accès prioritaire · Cadeaux</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLASH -->
+<section id="flash" class="feature-section">
+  <div class="container">
+    <div class="fs-grid reversed">
+      <div>
+        <div class="fs-tag fade-right">Urgence & engagement</div>
+        <h2 class="fs-title fade-right d1">Offres Flash<br><em>à durée limitée</em></h2>
+        <p class="fs-desc fade-right d2">Lancez une offre en 30 secondes. Elle apparaît dans l'onglet Découvrir de tous vos clients proches. Parfait pour écouler un surplus ou animer un creux.</p>
+        <div class="fs-bullets fade-right d3">
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Visible géolocalement</strong> auprès de vos clients à proximité.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Countdown visible</strong> qui crée l'urgence et pousse à venir.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Récompenses en points</strong> ou réductions %. Vous choisissez.</p></div>
+        </div>
+      </div>
+      <div class="phone-visual fade-left d2">
+        <div class="phone-device float" style="animation-delay:.9s">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar"><span class="status-time">9:41</span></div>
+            <div class="phone-content" style="padding:12px;gap:10px;display:flex;flex-direction:column">
+              <div style="font-size:11px;font-weight:600;color:var(--text-primary)">⚡ Flash Deals près de vous</div>
+              <div class="flash-card">
+                <div class="flash-badge">⚡ FLASH · 2h 34min restantes</div>
+                <div class="flash-title">Le Café du Coin</div>
+                <div class="flash-discount">−30%</div>
+                <div style="font-size:11px;font-weight:300;color:rgba(255,255,255,.6);margin-top:4px">Sur toutes les boissons chaudes</div>
+                <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between">
+                  <div class="flash-timer">⏱ Expire à 12h00</div>
+                  <div style="background:var(--gold);color:#fff;font-size:10px;font-weight:600;padding:4px 12px;border-radius:100px">En profiter →</div>
+                </div>
+              </div>
+              <div class="flash-card" style="background:linear-gradient(135deg,#0d1f38,#0a2a4a)">
+                <div class="flash-badge" style="background:var(--blue)">⚡ FLASH · 5h restantes</div>
+                <div class="flash-title">Bio du Quartier</div>
+                <div class="flash-discount" style="color:#60a5fa">Anti-gaspi</div>
+                <div style="font-size:11px;font-weight:300;color:rgba(255,255,255,.55);margin-top:4px">Paniers légumes · 5€ au lieu de 12€</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:10px">
+                <div style="font-size:16px">🥐</div>
+                <div><div style="font-size:10px;font-weight:600;color:var(--text-primary)">Boulangerie Martin</div><div style="font-size:8px;font-weight:300;color:var(--text-secondary)">+50 pts · Viennoiseries · Expire 18h</div></div>
+                <span class="metric-chip chip-gold" style="margin-left:auto;font-size:9px">+50 pts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS -->
+<section id="analytics" class="feature-section">
+  <div class="container">
+    <div class="fs-grid">
+      <div>
+        <div class="fs-tag fade-left">Premium</div>
+        <h2 class="fs-title fade-left d1">Analytics <em>avancés</em><br>en temps réel</h2>
+        <p class="fs-desc fade-left d2">LTV client, taux de churn, heatmap des visites, clients à risque. Prenez des décisions basées sur des données, pas sur des intuitions.</p>
+        <div class="fs-bullets fade-left d3">
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>LTV (Lifetime Value)</strong> par client. Identifiez vos clients les plus précieux.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Heatmap des visites</strong>. Savez quand votre boutique est la plus fréquentée.</p></div>
+          <div class="fs-bullet"><div class="fs-bullet-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="fs-bullet-text"><strong>Taux de rétention</strong> semaine par semaine. Mesurez l'impact de vos actions.</p></div>
+        </div>
+        <div style="margin-top:20px">
+          <span class="metric-chip chip-gold">✦ Plan Premium uniquement</span>
+          <a href="tarifs.html" style="display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--gold);border-bottom:1px solid var(--border-gold)">Voir les tarifs →</a>
+        </div>
+      </div>
+      <div class="phone-visual fade-right d2">
+        <div class="phone-device float" style="animation-delay:.4s">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar"><span class="status-time">9:41</span></div>
+            <div class="phone-content">
+              <div style="padding:6px 14px 4px;font-size:12px;font-weight:600;color:var(--text-primary)">Analytics Premium</div>
+              <div class="analytics-scroll">
+                <div class="analytics-kpi">
+                  <div class="analytics-chip"><div class="analytics-val">€42</div><div class="analytics-lbl">LTV moyen</div></div>
+                  <div class="analytics-chip"><div class="analytics-val" style="color:var(--red)">8%</div><div class="analytics-lbl">Taux churn</div></div>
+                  <div class="analytics-chip"><div class="analytics-val">72%</div><div class="analytics-lbl">Rétention 30j</div></div>
+                  <div class="analytics-chip"><div class="analytics-val" style="color:var(--green)">4.2j</div><div class="analytics-lbl">Fréq. visite</div></div>
+                </div>
+                <div style="font-size:10px;font-weight:600;color:var(--text-primary)">Heatmap visites / heure</div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div style="display:flex;gap:2px;align-items:center">
+                    <div style="font-size:7px;width:16px;color:var(--text-tertiary)">Lun</div>
+                    <div class="heat-cell" style="background:rgba(184,146,42,.08)"></div><div class="heat-cell" style="background:rgba(184,146,42,.15)"></div><div class="heat-cell" style="background:rgba(184,146,42,.35)"></div><div class="heat-cell" style="background:rgba(184,146,42,.6)"></div><div class="heat-cell" style="background:rgba(184,146,42,.85)"></div><div class="heat-cell" style="background:var(--gold)"></div><div class="heat-cell" style="background:rgba(184,146,42,.6)"></div><div class="heat-cell" style="background:rgba(184,146,42,.25)"></div><div class="heat-cell" style="background:rgba(184,146,42,.1)"></div>
+                  </div>
+                  <div style="display:flex;gap:2px;align-items:center">
+                    <div style="font-size:7px;width:16px;color:var(--text-tertiary)">Mar</div>
+                    <div class="heat-cell" style="background:rgba(184,146,42,.05)"></div><div class="heat-cell" style="background:rgba(184,146,42,.2)"></div><div class="heat-cell" style="background:rgba(184,146,42,.45)"></div><div class="heat-cell" style="background:rgba(184,146,42,.75)"></div><div class="heat-cell" style="background:var(--gold)"></div><div class="heat-cell" style="background:rgba(184,146,42,.7)"></div><div class="heat-cell" style="background:rgba(184,146,42,.4)"></div><div class="heat-cell" style="background:rgba(184,146,42,.15)"></div><div class="heat-cell" style="background:rgba(184,146,42,.05)"></div>
+                  </div>
+                  <div style="display:flex;gap:2px;align-items:center">
+                    <div style="font-size:7px;width:16px;color:var(--text-tertiary)">Mer</div>
+                    <div class="heat-cell" style="background:rgba(184,146,42,.1)"></div><div class="heat-cell" style="background:rgba(184,146,42,.25)"></div><div class="heat-cell" style="background:rgba(184,146,42,.5)"></div><div class="heat-cell" style="background:rgba(184,146,42,.8)"></div><div class="heat-cell" style="background:var(--gold)"></div><div class="heat-cell" style="background:rgba(184,146,42,.65)"></div><div class="heat-cell" style="background:rgba(184,146,42,.3)"></div><div class="heat-cell" style="background:rgba(184,146,42,.1)"></div><div class="heat-cell" style="background:rgba(184,146,42,.05)"></div>
                   </div>
                 </div>
-                <div class="loyalty-card lc-silver">
-                  <div class="lc-row"><span class="lc-brand">Boulangerie Paul</span><span class="lc-tier" style="background:#6e7eaa">Silver</span></div>
-                  <div class="lc-pts-num" style="color:#a8b4d0">420</div>
-                  <div class="lc-pts-sub">pts · prochaine remise à 600</div>
-                  <div class="lc-progress"><div class="lc-progress-bar" style="width:70%;background:#7b8bb5"></div></div>
+                <div style="font-size:10px;font-weight:600;color:var(--text-primary)">Clients à risque de churn</div>
+                <div style="background:rgba(255,59,48,.06);border:0.5px solid rgba(255,59,48,.18);border-radius:10px;padding:8px">
+                  <div style="font-size:10px;font-weight:600;color:var(--red)">3 clients inactifs 21j+</div>
+                  <div style="font-size:8px;font-weight:300;color:var(--text-secondary);margin-top:2px">Marie D., Thomas L., Léa M.</div>
                 </div>
               </div>
             </div>
-            <div class="tab-bar">
-              <div class="tab-item active"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2.5" stroke="#B8922A" stroke-width="1.4"/><path d="M2 9h16" stroke="#B8922A" stroke-width="1.4"/><circle cx="15" cy="13" r="1.2" fill="#B8922A"/></svg></div><span class="tab-label">Wallet</span></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3"/><rect x="7.5" y="7.5" width="5" height="5" rx="1" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.2"/></svg></div><span class="tab-label">Scanner</span></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.2 2 5 4.2 5 7c0 4.5 5 11 5 11s5-6.5 5-11c0-2.8-2.2-5-5-5z" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3"/><circle cx="10" cy="7" r="2" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.2"/></svg></div><span class="tab-label">Explore</span></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3" stroke-linecap="round"/></svg></div><span class="tab-label">Profil</span></div>
-            </div>
-          </div>
-        </div></div>
-      </div>
-    </div>
-
-    <!-- Tier system -->
-    <div class="feature-block rev">
-      <div class="fb-text fade-up">
-        <div class="fb-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.8 7.5H22l-6.2 4.5 2.4 7.5L12 17.2l-6.2 4.3 2.4-7.5L2 9.5h7.2L12 2z" stroke="#B8922A" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-        <h2 class="fb-title">Tier system — Standard à Platinum</h2>
-        <p class="fb-desc">La carte évolue visuellement avec le niveau du client. Chaque tier débloque des avantages supérieurs et crée un sentiment de progression et d'appartenance unique.</p>
-        <ul class="fb-points">
-          <li class="fb-point"><span class="fb-point-dot"></span>4 niveaux : Standard, Silver, Gold, Platinum</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Apparence de la carte adaptée à chaque tier</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Avantages exclusifs à partir du niveau Silver</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Retrogradation douce pour maintenir l'engagement</li>
-        </ul>
-      </div>
-      <div class="phone-visual fade-up d2">
-        <div class="tier-showcase">
-          <div style="font-weight:600;font-size:14px;margin-bottom:18px;color:var(--text-primary)">Votre progression</div>
-          <div class="tier-row">
-            <div class="tier-item" style="background:var(--bg-warm)">
-              <div class="ti-left">
-                <div class="ti-dot" style="background:#a0a0a0"></div>
-                <div><div class="ti-name">Standard</div><div class="ti-range">0 — 200 pts</div></div>
-              </div>
-              <div class="ti-perk">Accès de base</div>
-            </div>
-            <div class="tier-item" style="background:linear-gradient(135deg,#e8edf5,#dde4f0)">
-              <div class="ti-left">
-                <div class="ti-dot" style="background:#6e7eaa"></div>
-                <div><div class="ti-name">Silver</div><div class="ti-range">200 — 600 pts</div></div>
-              </div>
-              <div class="ti-perk">+5% sur les points</div>
-            </div>
-            <div class="tier-item" style="background:var(--gold-pale);border-color:var(--border-gold)">
-              <div class="ti-left">
-                <div class="ti-dot" style="background:var(--gold)"></div>
-                <div><div class="ti-name" style="color:var(--gold)">Gold ← vous</div><div class="ti-range">600 — 1 500 pts</div></div>
-              </div>
-              <div class="ti-perk" style="color:var(--gold)">+10% + roue</div>
-            </div>
-            <div class="tier-item" style="background:linear-gradient(135deg,#f0ede8,#e8e0d5);border-color:rgba(180,150,100,.3)">
-              <div class="ti-left">
-                <div class="ti-dot" style="background:linear-gradient(135deg,#c9a96e,#8b6914)"></div>
-                <div><div class="ti-name">Platinum</div><div class="ti-range">1 500+ pts</div></div>
-              </div>
-              <div class="ti-perk">Pass offert + priorité</div>
-            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Offres flash -->
-    <div class="feature-block">
-      <div class="fb-text fade-up">
-        <div class="fb-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2L4 13h8l-2 9 10-11h-8l2-9z" stroke="#B8922A" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-        <h2 class="fb-title">Offres flash géolocalisées</h2>
-        <p class="fb-desc">Les meilleures offres du quartier, en temps réel, avec un compte à rebours. Le bon client au bon moment — sans dépense publicitaire, sans friction.</p>
-        <ul class="fb-points">
-          <li class="fb-point"><span class="fb-point-dot"></span>Notification push dans un rayon de 500m</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Countdown pour créer l'urgence</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Ciblage par tier, historique d'achat ou zone géo</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Taux de conversion moyen 3× supérieur aux flyers</li>
-        </ul>
-      </div>
-      <div class="phone-visual fade-up d2">
-        <div class="flash-widget">
-          <div class="fw-header"><div class="fw-title">Offres flash du quartier</div><div class="fw-count">4 disponibles</div></div>
-          <div class="fw-list">
-            <div class="fw-item">
-              <div class="fw-avatar"><span>☕</span></div>
-              <div class="fw-body"><div class="fw-name">Café Lumière</div><div class="fw-val">2ème café offert · 280m</div></div>
-              <div class="fw-timer">30 min</div>
-            </div>
-            <div class="fw-item">
-              <div class="fw-avatar"><span>🥐</span></div>
-              <div class="fw-body"><div class="fw-name">Boulangerie Paul</div><div class="fw-val">−20% sur la viennoiserie</div></div>
-              <div class="fw-timer soon">2h 14</div>
-            </div>
-            <div class="fw-item">
-              <div class="fw-avatar"><span>🥗</span></div>
-              <div class="fw-body"><div class="fw-name">Épicerie Verde</div><div class="fw-val">Panier bio −15% · 420m</div></div>
-              <div class="fw-timer" style="color:var(--text-secondary);background:var(--bg-warm)">Demain 10h</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Instant gagnant -->
-    <div class="feature-block rev">
-      <div class="fb-text fade-up">
-        <div class="fb-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#B8922A" stroke-width="1.5"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2" stroke="#B8922A" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="#B8922A" stroke-width="1.3"/></svg></div>
-        <h2 class="fb-title">Instant gagnant après chaque scan</h2>
-        <p class="fb-desc">Une roue de la fortune est proposée à chaque visite. Café offert, remise immédiate, points bonus, surprise — chaque scan devient un moment de plaisir.</p>
-        <ul class="fb-points">
-          <li class="fb-point"><span class="fb-point-dot"></span>Probabilités configurables par le commerçant</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Animation fluide et satisfaisante</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Récompenses créditées automatiquement</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Augmente de 40% le taux de scan au 2e passage</li>
-        </ul>
-      </div>
-      <div class="phone-visual fade-up d2">
-        <div class="wheel-widget">
-          <div class="wheel-outer"><div class="wheel-center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 6.5H18l-5.5 4 2 6.5L10 15l-5.5 4 2-6.5L1 8.5h5.5L10 2z" stroke="#B8922A" stroke-width="1.3" stroke-linejoin="round"/></svg></div></div>
-          <div class="wheel-title">Tournez la roue !</div>
-          <div class="wheel-sub">Après chaque scan à Café Lumière</div>
-          <div class="wheel-prizes">
-            <div class="wp-item"><span class="wp-label">Café offert</span><span class="wp-prob">1 chance / 10</span></div>
-            <div class="wp-item"><span class="wp-label">−20% prochain passage</span><span class="wp-prob">2 chances / 10</span></div>
-            <div class="wp-item"><span class="wp-label">+50 points bonus</span><span class="wp-prob">4 chances / 10</span></div>
-            <div class="wp-item"><span class="wp-label">Surprise du jour</span><span class="wp-prob">1 chance / 10</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Explore local -->
-    <div class="feature-block">
-      <div class="fb-text fade-up">
-        <div class="fb-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.7 2 6 4.7 6 8c0 5.3 6 14 6 14s6-8.7 6-14c0-3.3-2.7-6-6-6z" stroke="#B8922A" stroke-width="1.5"/><circle cx="12" cy="8" r="2.5" stroke="#B8922A" stroke-width="1.3"/></svg></div>
-        <h2 class="fb-title">Explore local — carte interactive</h2>
-        <p class="fb-desc">Découvrez tous les commerces CoLinker autour de vous sur une carte interactive. Filtrez par catégorie, note, offre en cours ou distance.</p>
-        <ul class="fb-points">
-          <li class="fb-point"><span class="fb-point-dot"></span>Carte en temps réel avec offres actives</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Filtres : catégorie, tier client, distance</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Profil complet du commerce avec avis</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Scan possible directement depuis la carte</li>
-        </ul>
-      </div>
-      <div class="phone-visual fade-up d2">
-        <div class="explore-widget">
-          <div class="explore-map">
-            <div class="map-grid"></div>
-            <div class="map-road-h" style="top:45%"></div>
-            <div class="map-road-h" style="top:70%"></div>
-            <div class="map-road-v" style="left:35%"></div>
-            <div class="map-road-v" style="left:65%"></div>
-            <div class="map-pin" style="top:35%;left:30%"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1h4v4H1zM1 7h4v4H1zM7 1h4v4H7z" fill="#fff" opacity=".8"/><rect x="8.5" y="7.5" width="1" height="3" fill="#fff" opacity=".8"/><rect x="7" y="9" width="4" height="1" fill="#fff" opacity=".8"/></svg></div>
-            <div class="map-pin" style="top:55%;left:60%"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1C3.3 1 2 2.3 2 4c0 2.5 3 6 3 6s3-3.5 3-6c0-1.7-1.3-3-3-3z" fill="#fff" opacity=".8"/></svg></div>
-            <div class="map-pin" style="top:20%;left:58%"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><rect x="1" y="3" width="8" height="6" rx="1.5" fill="#fff" opacity=".8"/><path d="M3 3V2a2 2 0 014 0v1" stroke="#fff" opacity=".8" stroke-width="1" fill="none"/></svg></div>
-            <div class="map-pin user" style="top:50%;left:45%"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="4" r="2" fill="#fff" opacity=".9"/><path d="M2 9c0-1.7 1.3-3 3-3s3 1.3 3 3" stroke="#fff" opacity=".9" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
-          </div>
-          <div class="explore-list">
-            <div class="el-item"><div class="el-cat">☕</div><div class="el-name">Café Lumière</div><div class="el-dist">120m</div><div class="el-stars">★★★★★</div></div>
-            <div class="el-item"><div class="el-cat">🥐</div><div class="el-name">Boulangerie Paul</div><div class="el-dist">280m</div><div class="el-stars">★★★★☆</div></div>
-            <div class="el-item"><div class="el-cat">🛒</div><div class="el-name">Épicerie Verde</div><div class="el-dist">420m</div><div class="el-stars">★★★★★</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-
-<!-- MERCHANT FEATURES -->
-<section id="merchant-features" aria-labelledby="mf-title">
+<!-- ALL FEATURES GRID -->
+<section id="all-features">
   <div class="container">
     <header class="section-header">
-      <div class="section-label fade-up">Pour les commerçants</div>
-      <h2 class="section-title fade-up d1" id="mf-title">Des outils qui vous donnent<br>le contrôle</h2>
-      <p class="section-subtitle fade-up d2">Tout ce dont vous avez besoin pour fidéliser, analyser et reconquérir — sans formation, sans complexité.</p>
+      <div class="section-label fade-up">Tout inclus</div>
+      <h2 class="section-title fade-up d1">Et bien <em>plus encore</em></h2>
+      <p class="section-subtitle fade-up d2">CoLinker continue d'évoluer avec de nouvelles fonctionnalités chaque mois.</p>
     </header>
-
-    <!-- Dashboard analytics -->
-    <div class="feature-block">
-      <div class="fb-text fade-up">
-        <div class="fb-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" stroke="#B8922A" stroke-width="1.5"/><rect x="10" y="7" width="4" height="14" rx="1" stroke="#B8922A" stroke-width="1.5"/><rect x="17" y="3" width="4" height="18" rx="1" stroke="#B8922A" stroke-width="1.5"/></svg></div>
-        <h2 class="fb-title">Dashboard analytics temps réel</h2>
-        <p class="fb-desc">Scans du jour, clients actifs, rétention, MRR — tout en direct depuis votre téléphone ou navigateur. Prenez les bonnes décisions avec des données fiables.</p>
-        <ul class="fb-points">
-          <li class="fb-point"><span class="fb-point-dot"></span>Vue hebdomadaire, mensuelle et annuelle</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>LTV client et taux de churn (Premium)</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Heatmap des heures de visite (Premium)</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Comparaison semaine N vs semaine N-1</li>
-        </ul>
-      </div>
-      <div class="phone-visual fade-up d2">
-        <div class="float"><div class="phone-device" aria-hidden="true">
-          <div class="phone-screen" style="background:var(--bg-main)">
-            <div class="dynamic-island"></div>
-            <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><svg width="22" height="10" viewBox="0 0 22 10" fill="none"><rect x=".5" y=".5" width="17" height="9" rx="2.5" stroke="#1A1A1A" stroke-opacity=".35"/><rect x="2" y="2" width="12.5" height="6" rx="1.5" fill="#1A1A1A"/></svg></div></div>
-            <div class="dash-app-header"><div><div class="dash-title">Dashboard</div><div class="dash-date">Samedi 12 avril</div></div><div class="dash-flash-btn">+ Flash</div></div>
-            <div class="dash-stats-row">
-              <div class="ds-card"><div class="ds-val">47</div><div class="ds-label">Scans aujourd'hui</div><div class="ds-delta">↑ +18%</div></div>
-              <div class="ds-card"><div class="ds-val">12</div><div class="ds-label">Nouveaux clients</div><div class="ds-delta">↑ +3</div></div>
-              <div class="ds-card"><div class="ds-val">68%</div><div class="ds-label">Rétention sem.</div><div class="ds-delta" style="color:var(--orange);background:rgba(255,149,0,.08)">→ stable</div></div>
-              <div class="ds-card"><div class="ds-val">342€</div><div class="ds-label">MRR pass</div><div class="ds-delta">↑ +22%</div></div>
-            </div>
-            <div class="dash-chart-wrap">
-              <div class="dw-label2">Scans — 7 derniers jours</div>
-              <div class="dw-chart2" id="chartWeek">
-                <div class="dw-bw"><div class="dw-b" style="height:0" data-h="55%"></div><div class="dw-bl">L</div></div>
-                <div class="dw-bw"><div class="dw-b" style="height:0" data-h="72%"></div><div class="dw-bl">M</div></div>
-                <div class="dw-bw"><div class="dw-b" style="height:0" data-h="60%"></div><div class="dw-bl">M</div></div>
-                <div class="dw-bw"><div class="dw-b" style="height:0" data-h="85%"></div><div class="dw-bl">J</div></div>
-                <div class="dw-bw"><div class="dw-b" style="height:0" data-h="90%"></div><div class="dw-bl">V</div></div>
-                <div class="dw-bw"><div class="dw-b act" style="height:0" data-h="100%"></div><div class="dw-bl">S</div></div>
-                <div class="dw-bw"><div class="dw-b" style="height:0" data-h="45%"></div><div class="dw-bl">D</div></div>
-              </div>
-            </div>
-            <div class="dash-recent">
-              <div class="dr-title">Derniers scans</div>
-              <div class="dr-list">
-                <div class="dr-item"><div class="dr-av">JD</div><div class="dr-name">Julie D.</div><div class="dr-pts">+40 pts</div><div class="dr-time">14:23</div></div>
-                <div class="dr-item"><div class="dr-av">MR</div><div class="dr-name">Marc R.</div><div class="dr-pts">+40 pts</div><div class="dr-time">13:58</div></div>
-                <div class="dr-item"><div class="dr-av">AL</div><div class="dr-name">Alice L.</div><div class="dr-pts">Nouveau</div><div class="dr-time">13:41</div></div>
-              </div>
-            </div>
-            <div class="tab-bar">
-              <div class="tab-item active"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="11" width="3.5" height="7" rx="1" stroke="#B8922A" stroke-width="1.3"/><rect x="8.5" y="7" width="3.5" height="11" rx="1" stroke="#B8922A" stroke-width="1.3"/><rect x="14" y="3" width="3.5" height="15" rx="1" stroke="#B8922A" stroke-width="1.3"/></svg></div><span class="tab-label">Dashboard</span></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3"/><rect x="7.5" y="7.5" width="5" height="5" rx="1" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.2"/></svg></div><span class="tab-label">Scanner</span></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="7" r="3" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3"/><path d="M3 17c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3" stroke-linecap="round"/><path d="M13 5.5c1.2.6 2 1.9 2 3.3 0 1.2-.5 2.2-1.3 3" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3" stroke-linecap="round"/><path d="M15 14.5c1.2.7 2 2 2 3.5" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3" stroke-linecap="round"/></svg></div><span class="tab-label">Clients</span></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M14 2L5 11h7l-2 7 8-9h-7l2-7z" stroke="#1A1A1A" stroke-opacity=".3" stroke-width="1.3" stroke-linejoin="round"/></svg></div><span class="tab-label">Offres</span></div>
-            </div>
-          </div>
-        </div></div>
-      </div>
+    <div class="af-grid">
+      <div class="af-card fade-up d1"><div class="af-icon">🎫</div><div class="af-title">Pass mensuels</div><p class="af-desc">Créez des abonnements récurrents pour vos clients. Revenus prévisibles, engagement maximal.</p><span class="af-badge">✦ Premium</span></div>
+      <div class="af-card fade-up d2"><div class="af-icon">🛒</div><div class="af-title">Click & Collect</div><p class="af-desc">Vos clients commandent depuis l'app, vous préparez. Anti-gaspi et click & collect intégrés.</p></div>
+      <div class="af-card fade-up d3"><div class="af-icon">📩</div><div class="af-title">Rapport hebdo</div><p class="af-desc">Chaque lundi, recevez un résumé complet de votre semaine. Tendances et alertes incluses.</p></div>
+      <div class="af-card fade-up d4"><div class="af-icon">⭐</div><div class="af-title">Boost avis Google</div><p class="af-desc">Envoyez automatiquement une invitation à laisser un avis après chaque 3ème visite. +20 pts bonus.</p></div>
+      <div class="af-card fade-up d5"><div class="af-icon">🔔</div><div class="af-title">Notifications push</div><p class="af-desc">Alertes scan, offres flash, upgrades de tier. Vos clients restent connectés à votre commerce.</p></div>
+      <div class="af-card fade-up d6"><div class="af-icon">🌍</div><div class="af-title">Onglet Découvrir</div><p class="af-desc">Vos offres flash et publications apparaissent dans l'onglet Explore des clients autour de vous.</p><span class="af-badge">✦ Premium prioritaire</span></div>
     </div>
-
-    <!-- Scanner intelligent -->
-    <div class="feature-block rev">
-      <div class="fb-text fade-up">
-        <div class="fb-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2.5" stroke="#B8922A" stroke-width="1.5"/><path d="M4 9h16M9 4v5M15 4v5" stroke="#B8922A" stroke-width="1.4" stroke-linecap="round"/><rect x="7" y="12.5" width="3" height="3.5" rx="1" stroke="#B8922A" stroke-width="1.2"/><rect x="14" y="12.5" width="3" height="3.5" rx="1" stroke="#B8922A" stroke-width="1.2"/></svg></div>
-        <h2 class="fb-title">Scanner QR ou OTP en 3 secondes</h2>
-        <p class="fb-desc">QR code dynamique ou code OTP à 4 chiffres. Le client est détecté automatiquement, ses points crédités, et l'avis Google demandé toutes les 3 visites.</p>
-        <ul class="fb-points">
-          <li class="fb-point"><span class="fb-point-dot"></span>QR code dynamique anti-fraude</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>OTP 4 chiffres pour les clients sans smartphone</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Nouveau client enregistré automatiquement</li>
-          <li class="fb-point"><span class="fb-point-dot"></span>Demande d'avis Google à la 3e visite</li>
-        </ul>
-      </div>
-      <div class="phone-visual fade-up d2">
-        <div class="float"><div class="phone-device" aria-hidden="true">
-          <div class="phone-screen" style="background:#0e0e0e">
-            <div class="dynamic-island" style="background:#000"></div>
-            <div class="status-bar" style="background:#0e0e0e"><span class="status-time" style="color:#fff">9:41</span></div>
-            <div class="scan-header" style="background:#0e0e0e">
-              <span class="scan-title" style="color:#fff">Scanner</span>
-              <div class="scan-mode-toggle" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.15)">
-                <span class="smt-btn active" style="background:var(--gold);color:#fff">QR</span>
-                <span class="smt-btn" style="color:rgba(255,255,255,.6)">OTP</span>
-              </div>
-            </div>
-            <div class="scan-qr-area">
-              <div class="scan-overlay"></div>
-              <div class="scan-frame">
-                <div class="scan-corner sc-tl"></div>
-                <div class="scan-corner sc-tr"></div>
-                <div class="scan-corner sc-bl"></div>
-                <div class="scan-corner sc-br"></div>
-              </div>
-              <div class="scan-laser"></div>
-            </div>
-            <div class="scan-result" style="background:#0e0e0e">
-              <div class="sr-card">
-                <div class="sr-row">
-                  <div class="sr-av">JD</div>
-                  <div><div class="sr-name">Julie Dupont</div><div class="sr-sub">6e visite · Gold · 840 pts</div></div>
-                </div>
-                <div class="sr-badges">
-                  <span class="metric-chip chip-green" style="font-size:10px">+40 pts crédités</span>
-                  <span class="metric-chip chip-gold" style="font-size:10px">Roue dispo</span>
-                </div>
-              </div>
-            </div>
-            <div class="otp-area" style="background:#0e0e0e">
-              <div class="otp-label" style="color:rgba(255,255,255,.4)">Code OTP alternatif</div>
-              <div class="otp-code-big" style="color:#fff">8  4  7  2</div>
-            </div>
-            <div class="tab-bar" style="background:rgba(14,14,14,.95);border-top-color:rgba(255,255,255,.08)">
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="11" width="3.5" height="7" rx="1" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/><rect x="8.5" y="7" width="3.5" height="11" rx="1" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/><rect x="14" y="3" width="3.5" height="15" rx="1" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/></svg></div><span class="tab-label" style="color:rgba(255,255,255,.4)">Dashboard</span></div>
-              <div class="tab-item active"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#B8922A" stroke-width="1.3"/><rect x="7.5" y="7.5" width="5" height="5" rx="1" stroke="#B8922A" stroke-width="1.2"/></svg></div><span class="tab-label" style="color:var(--gold)">Scanner</span></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="7" r="3" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/><path d="M3 17c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="rgba(255,255,255,.4)" stroke-width="1.3" stroke-linecap="round"/></svg></div><span class="tab-label" style="color:rgba(255,255,255,.4)">Clients</span></div>
-              <div class="tab-item"><div class="tab-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M14 2L5 11h7l-2 7 8-9h-7l2-7z" stroke="rgba(255,255,255,.4)" stroke-width="1.3" stroke-linejoin="round"/></svg></div><span class="tab-label" style="color:rgba(255,255,255,.4)">Offres</span></div>
-            </div>
-          </div>
-        </div></div>
-      </div>
-    </div>
-
   </div>
 </section>
-
 
 <!-- CTA -->
-<section style="background:var(--dark-bar);padding:80px 0;text-align:center">
-  <div class="container">
-    <h2 style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(28px,4vw,48px);color:#fff;margin-bottom:16px;" class="fade-up">Convaincu ? Essayez gratuitement.</h2>
-    <p style="font-size:16px;font-weight:300;color:rgba(255,255,255,.55);margin-bottom:36px;" class="fade-up d1">Opérationnel en 10 minutes. Sans carte de crédit.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="fade-up d2">
-      <a href="telecharger.html" class="btn btn-gold" style="padding:14px 28px;">Télécharger CoLinker</a>
-      <a href="tarifs.html" class="btn btn-white-outline" style="padding:14px 28px;">Voir les tarifs</a>
+<section id="cta-section">
+  <div class="cta-glow"></div>
+  <div class="container cta-content">
+    <span class="cf-label fade-up">Convaincu ?</span>
+    <h2 class="cf-title fade-up d1">Essayez CoLinker.<br>C'est gratuit.</h2>
+    <p class="cf-sub fade-up d2">Toutes ces fonctionnalités, sans frais pour commencer. Jusqu'à 150 clients actifs, sans engagement.</p>
+    <div class="cf-btns fade-up d3">
+      <a href="telecharger.html" class="btn btn-gold" style="padding:16px 36px;font-size:16px">Télécharger l'app</a>
+      <a href="tarifs.html" class="btn btn-white-outline" style="padding:16px 36px;font-size:16px">Voir les tarifs</a>
     </div>
   </div>
 </section>
+
 </main>
 
-
-<!-- FOOTER -->
 <footer id="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo"><span class="co">Co</span><span class="linker">Linker</span></div>
-        <p class="footer-tagline">Le lien qui fidélise.<br>Connecter commerçants et clients depuis 2024.</p>
+        <p class="footer-tagline">Le lien qui fidélise.<br>Connecter commerçants et clients de quartier depuis 2024.</p>
         <div class="footer-social">
           <a href="#" class="social-link" aria-label="TikTok"><svg viewBox="0 0 16 16" fill="rgba(26,26,26,0.55)"><path d="M11 1c0 2 1.6 3.3 3 3.4v2.2c-1.1 0-2.2-.4-3-1v4.9c0 2.5-2 4.5-4.5 4.5S2 13 2 10.5 4 6 6.5 6v2.2C5.1 8.2 4 9.2 4 10.5c0 1.4 1.1 2.5 2.5 2.5s2.5-1.1 2.5-2.5V1h2z"/></svg></a>
           <a href="#" class="social-link" aria-label="Instagram"><svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="rgba(26,26,26,0.55)" stroke-width="1.3"/><circle cx="8" cy="8" r="3" stroke="rgba(26,26,26,0.55)" stroke-width="1.3"/><circle cx="11.5" cy="4.5" r=".9" fill="rgba(26,26,26,0.55)"/></svg></a>
           <a href="#" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="rgba(26,26,26,0.55)" stroke-width="1.3"/><path d="M5 6.5v5M5 4.5v.3M8 11.5V9c0-1.4.8-2.5 2-2.5s2 1 2 2.5v2.5M8 6.5v5" stroke="rgba(26,26,26,0.55)" stroke-width="1.2" stroke-linecap="round"/></svg></a>
         </div>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Produit</div>
-        <ul><li><a href="fonctionnalites.html">Fonctionnalités</a></li><li><a href="tarifs.html">Tarifs</a></li><li><a href="commercants.html">Pour les commerçants</a></li><li><a href="telecharger.html">Télécharger</a></li></ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Ressources</div>
-        <ul><li><a href="#">Centre d'aide</a></li><li><a href="#">Guide de démarrage</a></li><li><a href="#">Blog</a></li><li><a href="#">Presse</a></li></ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Légal</div>
-        <ul><li><a href="#">CGU</a></li><li><a href="#">Confidentialité</a></li><li><a href="#">Mentions légales</a></li><li><a href="#">Supprimer mon compte</a></li><li><a href="#">Contact</a></li></ul>
-      </div>
+      <div class="footer-col"><div class="footer-col-title">Produit</div><ul><li><a href="fonctionnalites.html">Fonctionnalités</a></li><li><a href="tarifs.html">Tarifs</a></li><li><a href="commercants.html">Pour les commerçants</a></li><li><a href="telecharger.html">Télécharger</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Ressources</div><ul><li><a href="#">Centre d'aide</a></li><li><a href="#">Guide de démarrage</a></li><li><a href="#">Blog</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Légal</div><ul><li><a href="#">CGU</a></li><li><a href="#">Confidentialité</a></li><li><a href="#">Mentions légales</a></li><li><a href="#">Contact</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">© 2025 CoLinker. Fait avec <span class="heart">♥</span> en France.</span>
-      <div class="footer-badges">
-        <span class="footer-badge"><svg viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3.5H11l-2.8 2 1 3.5L6 8 2.8 10l1-3.5L1 4.5h3.5L6 1z" stroke="rgba(26,26,26,0.5)" stroke-width="1" stroke-linejoin="round"/></svg>4,9 App Store</span>
-        <span class="footer-badge"><svg viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="rgba(26,26,26,0.5)" stroke-width="1"/><path d="M6 3.5v3l1.5 1" stroke="rgba(26,26,26,0.5)" stroke-width="1" stroke-linecap="round"/></svg>RGPD conforme</span>
-      </div>
+      <div class="footer-badges"><span class="footer-badge"><svg viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3.5H11l-2.8 2 1 3.5L6 8 2.8 10l1-3.5L1 4.5h3.5L6 1z" stroke="rgba(26,26,26,0.5)" stroke-width="1" stroke-linejoin="round"/></svg>4,9 App Store</span></div>
     </div>
   </div>
 </footer>
