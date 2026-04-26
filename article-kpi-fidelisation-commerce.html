@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Les 5 KPIs indispensables pour piloter la fidélisation de son commerce</title>
+  <meta name="description" content="Quels indicateurs (KPIs) suivre pour piloter efficacement la fidélisation de son commerce ? Les 5 métriques clés : taux de rétention, LTV, churn, fréquence, NPS. Guide pratique."/>
+  <link rel="canonical" href="https://www.colinker.fr/blog/kpi-fidelisation-commerce.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+    .article-hero{padding:140px 0 72px;background:var(--bg-main);border-bottom:1px solid var(--border)}
+    .article-meta{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+    .meta-tag{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);background:var(--gold-bg);border:0.5px solid var(--border-gold);border-radius:100px;padding:4px 12px}
+    .meta-info{font-size:12px;font-weight:300;color:var(--text-tertiary)}
+    .article-h1{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(30px,5vw,56px);line-height:1.1;color:var(--text-primary);margin-bottom:20px;max-width:820px}
+    .article-intro{font-size:17px;font-weight:300;color:var(--text-secondary);line-height:1.8;max-width:680px}
+    .article-body{padding:72px 0 100px}
+    .article-layout{display:grid;grid-template-columns:1fr 280px;gap:64px;align-items:start;max-width:1100px;margin:0 auto;padding:0 28px}
+    .article-content h2{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(22px,3vw,32px);color:var(--text-primary);margin:44px 0 14px}
+    .article-content h3{font-size:17px;font-weight:600;color:var(--text-primary);margin:28px 0 10px}
+    .article-content p{font-size:15px;font-weight:300;color:var(--text-secondary);line-height:1.85;margin-bottom:18px}
+    .article-content p strong{font-weight:600;color:var(--text-primary)}
+    .article-content ul{margin:0 0 20px;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+    .article-content ul li{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:300;color:var(--text-secondary);line-height:1.65}
+    .article-content ul li::before{content:'✦';color:var(--gold);font-size:10px;margin-top:5px;flex-shrink:0}
+    .highlight{background:var(--gold-bg);border:1px solid var(--border-gold);border-radius:14px;padding:20px 24px;margin:28px 0}
+    .highlight-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .highlight p{margin:0;font-size:14px;color:var(--text-secondary);line-height:1.7}
+    .dark-box{background:var(--dark-bar);border-radius:18px;padding:28px;margin:32px 0}
+    .dark-box-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .dark-box p{color:rgba(255,255,255,.6);font-size:14px;line-height:1.7;margin:0}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
+    .stat-item{background:var(--surface);border:0.5px solid var(--border-gold);border-radius:14px;padding:18px;text-align:center}
+    .stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px}
+    .stat-lbl{font-size:12px;font-weight:300;color:var(--text-secondary)}
+    .blockquote{border-left:3px solid var(--gold);padding:14px 20px;margin:28px 0;background:var(--bg-warm);border-radius:0 12px 12px 0}
+    .blockquote p{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:var(--text-primary);line-height:1.6;margin:0 0 6px}
+    .blockquote cite{font-size:11px;font-weight:300;color:var(--text-tertiary)}
+    .sidebar{position:sticky;top:90px;display:flex;flex-direction:column;gap:20px}
+    .sidebar-card{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:22px}
+    .sidebar-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:14px}
+    .toc-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5;margin-bottom:10px;text-decoration:none;transition:color .2s}
+    .toc-item:hover{color:var(--gold)}
+    .toc-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+    .cta-box{background:var(--dark-bar);border-radius:16px;padding:22px;text-align:center}
+    .cta-box-title{font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:#fff;margin-bottom:10px;line-height:1.3}
+    .cta-box-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:16px;line-height:1.6}
+    .cta-box-btn{display:block;background:var(--gold);color:#fff;font-size:14px;font-weight:600;padding:12px;border-radius:12px;text-decoration:none;transition:background .2s}
+    .cta-box-btn:hover{background:var(--gold-light)}
+    .related-posts{display:flex;flex-direction:column;gap:10px}
+    .related-item{display:flex;gap:10px;text-decoration:none;padding:10px;border-radius:10px;transition:background .2s}
+    .related-item:hover{background:var(--bg-warm)}
+    .related-dot{width:8px;height:8px;border-radius:50%;background:var(--border-gold);flex-shrink:0;margin-top:5px}
+    .related-title{font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5}
+    @media(max-width:900px){.article-layout{grid-template-columns:1fr;padding:0 20px}.sidebar{position:static}.stat-row{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<nav id="nav" role="navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo"><span class="co">Co</span><span class="linker">Linker</span></a>
+      <div class="nav-links">
+        <a href="../fonctionnalites.html">Fonctionnalités</a>
+        <a href="../commercants.html">Commerçants</a>
+        <a href="../tarifs.html">Tarifs</a>
+        <a href="../telecharger.html">Télécharger</a>
+      </div>
+      <div class="nav-right">
+        <a href="../telecharger.html" class="btn btn-gold" style="padding:10px 20px;font-size:14px">Démarrer gratuitement</a>
+        <button class="burger" id="burgerBtn" aria-label="Menu"><span class="burger-line"></span><span class="burger-line"></span><span class="burger-line"></span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../fonctionnalites.html" onclick="closeMobile()">Fonctionnalités</a>
+  <a href="../commercants.html" onclick="closeMobile()">Commerçants</a>
+  <a href="../tarifs.html" onclick="closeMobile()">Tarifs</a>
+  <a href="../telecharger.html" onclick="closeMobile()">Télécharger</a>
+  <a href="../telecharger.html" class="btn btn-gold" onclick="closeMobile()">Démarrer gratuitement</a>
+</div>
+<main>
+  <section class="article-hero">
+    <div class="container">
+      <div class="article-meta">
+        <span class="meta-tag">Analytics</span>
+        <span class="meta-info">Avril 2025 · 8 min de lecture</span>
+      </div>
+      <h1 class="article-h1">Les 5 KPIs indispensables pour piloter la fidélisation de votre commerce</h1>
+      <p class="article-intro">On ne peut améliorer que ce qu'on mesure. Pourtant, la plupart des commerçants indépendants pilotent leur fidélisation à l'intuition. Voici les 5 indicateurs qui changent tout — et comment les suivre simplement.</p>
+    </div>
+  </section>
+  <div class="article-body">
+    <div class="article-layout">
+      <article class="article-content">
+        
+<p>Un commerçant qui sait que 35% de ses clients reviennent chaque mois peut prendre des décisions très différentes de celui qui l'ignore. Il sait qu'il doit améliorer ce chiffre, que chaque point de plus représente X€ de CA supplémentaire, et que ses actions de fidélisation ont un impact mesurable.</p>
+<p>C'est ça, piloter par les données. Et c'est maintenant accessible à tous les commerces indépendants.</p>
+<h2>KPI 1 — Le taux de rétention</h2>
+<p><strong>Définition :</strong> pourcentage de clients qui reviennent d'un mois sur l'autre.</p>
+<p><strong>Formule :</strong> (Clients actifs ce mois qui étaient aussi actifs le mois dernier) / Total clients actifs le mois dernier × 100</p>
+<p><strong>Benchmark :</strong> sans programme de fidélité, la rétention mensuelle d'un commerce de proximité est souvent entre 20 et 35%. Avec un programme bien configuré, elle peut dépasser 60%.</p>
+<div class="stat-row">
+  <div class="stat-item"><div class="stat-num">20-35%</div><div class="stat-lbl">Rétention sans programme fidélité</div></div>
+  <div class="stat-item"><div class="stat-num">50-65%</div><div class="stat-lbl">Rétention avec programme digital</div></div>
+  <div class="stat-item"><div class="stat-num">70-85%</div><div class="stat-lbl">Rétention avec pass mensuel</div></div>
+</div>
+<h2>KPI 2 — La fréquence de visite</h2>
+<p><strong>Définition :</strong> nombre moyen de visites par client actif par mois.</p>
+<p>C'est l'indicateur qui a l'impact le plus direct sur votre CA. Passer d'une fréquence de 2 à 3 visites/mois pour vos 100 clients actifs représente +50% de CA sur ce segment.</p>
+<p>Suivez cette métrique par tier : vos clients Gold doivent avoir une fréquence 2 à 3× supérieure à vos clients Standard. Si ce n'est pas le cas, vos avantages Gold ne sont pas suffisamment attractifs.</p>
+<h2>KPI 3 — Le taux de churn</h2>
+<p><strong>Définition :</strong> pourcentage de clients actifs qui cessent de venir chaque mois.</p>
+<p>C'est le miroir du taux de rétention. Un churn de 5% par mois peut sembler faible — mais il représente 46% de perte annuelle si rien n'est fait. La détection précoce (clients inactifs depuis 21 jours) est la clé pour intervenir à temps.</p>
+<h2>KPI 4 — La LTV (Lifetime Value)</h2>
+<p><strong>Définition :</strong> revenu total généré par un client pendant toute sa relation avec votre commerce.</p>
+<p>C'est l'indicateur le plus stratégique. Il vous dit combien un client "vaut" — et donc combien vous pouvez vous permettre de dépenser pour le fidéliser ou le reconquérir.</p>
+<h2>KPI 5 — Le taux de conversion vers les pass mensuels</h2>
+<p><strong>Définition :</strong> pourcentage de vos clients actifs qui souscrivent à un pass mensuel.</p>
+<p>C'est un KPI spécifique à CoLinker, mais il est particulièrement important car il mesure directement votre capacité à générer des revenus récurrents. Un taux de 10% (10 abonnés sur 100 clients actifs) est un premier objectif réaliste.</p>
+<h2>Comment suivre ces KPIs avec CoLinker</h2>
+<p>Le dashboard commerçant CoLinker affiche en temps réel les scans du jour, les clients actifs et le MRR. La version Premium ajoute le LTV moyen, le taux de churn, la heatmap des visites, et le top 5 des clients les plus fidèles. Ces données sont mises à jour à chaque scan — pas besoin d'export Excel ni de calcul manuel.</p>
+
+      </article>
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">Sommaire</div>
+          <a href="#" class="toc-item"><div class="toc-dot"></div><div style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5">Pourquoi mesurer</div></a><a href="#" class="toc-item"><div class="toc-dot"></div><div style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5">KPI 1 — Taux de rétention</div></a><a href="#" class="toc-item"><div class="toc-dot"></div><div style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5">KPI 2 — Fréquence de visite</div></a><a href="#" class="toc-item"><div class="toc-dot"></div><div style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5">KPI 3 — Taux de churn</div></a><a href="#" class="toc-item"><div class="toc-dot"></div><div style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5">KPI 4 — LTV client</div></a><a href="#" class="toc-item"><div class="toc-dot"></div><div style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5">KPI 5 — Taux de conversion pass</div></a><a href="#" class="toc-item"><div class="toc-dot"></div><div style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.5">Tableau de bord en pratique</div></a>
+        </div>
+        <div class="cta-box">
+          <div class="cta-box-title">Essayez CoLinker gratuitement</div>
+          <div class="cta-box-sub">150 clients inclus. Sans engagement. 10 minutes.</div>
+          <a href="../telecharger.html" class="cta-box-btn">Démarrer maintenant →</a>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-title">Articles liés</div>
+          <div class="related-posts">
+            <a href="test-colinker-30-jours.html" class="related-item"><div class="related-dot"></div><div class="related-title">On a testé CoLinker 30 jours</div></a>
+            <a href="comparatif-apps-fidelite.html" class="related-item"><div class="related-dot"></div><div class="related-title">Top 7 apps fidélité 2025</div></a>
+            <a href="pass-mensuel-commerce.html" class="related-item"><div class="related-dot"></div><div class="related-title">Pass mensuel : revenus récurrents</div></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="co">Co</span><span class="linker">Linker</span></div>
+        <p class="footer-tagline">La fidélité, réinventée.<br>Connecter commerçants et clients locaux depuis 2024.</p>
+      </div>
+      <div class="footer-col"><div class="footer-col-title">Produit</div><ul><li><a href="../fonctionnalites.html">Fonctionnalités</a></li><li><a href="../tarifs.html">Tarifs</a></li><li><a href="../commercants.html">Commerçants</a></li><li><a href="../telecharger.html">Télécharger</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Blog</div><ul><li><a href="index.html">Tous les articles</a></li><li><a href="test-colinker-30-jours.html">Test 30 jours</a></li><li><a href="comparatif-apps-fidelite.html">Comparatif apps</a></li><li><a href="pass-mensuel-commerce.html">Pass mensuels</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Légal</div><ul><li><a href="#">CGU</a></li><li><a href="#">Confidentialité</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 CoLinker. Fait avec <span class="heart">♥</span> en France.</span>
+      <div class="footer-badges"><span class="footer-badge">4,9 App Store</span><span class="footer-badge">RGPD conforme</span></div>
+    </div>
+  </div>
+</footer>
+<script src="../main.js"></script>
+</body>
+</html>

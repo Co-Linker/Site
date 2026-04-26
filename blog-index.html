@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog CoLinker — Guides, conseils et stratégies pour fidéliser vos clients</title>
+  <meta name="description" content="Le blog CoLinker : guides pratiques, comparatifs et stratégies pour les commerçants indépendants. Fidélisation, pass mensuels, anti-churn, analytics — tout pour faire revenir vos clients."/>
+  <link rel="canonical" href="https://www.colinker.fr/blog/"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+    .blog-hero{padding:140px 0 72px;background:var(--bg-main);border-bottom:1px solid var(--border);text-align:center}
+    .blog-h1{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(36px,5vw,62px);line-height:1.1;color:var(--text-primary);margin-bottom:16px}
+    .blog-sub{font-size:17px;font-weight:300;color:var(--text-secondary);max-width:560px;margin:0 auto 32px;line-height:1.75}
+    .blog-filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+    .filter-btn{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 16px;border-radius:100px;border:0.5px solid var(--border);background:var(--surface);color:var(--text-secondary);cursor:pointer;transition:all .2s}
+    .filter-btn.active,.filter-btn:hover{border-color:var(--border-gold);background:var(--gold-bg);color:var(--gold)}
+    .blog-body{padding:72px 0 100px}
+    .featured{margin-bottom:64px}
+    .featured-card{background:var(--dark-bar);border-radius:24px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;position:relative;overflow:hidden}
+    .featured-card::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(184,146,42,0.15) 0%,transparent 65%)}
+    .featured-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .featured-title{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(24px,3vw,36px);color:#fff;line-height:1.2;margin-bottom:14px}
+    .featured-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px}
+    .featured-meta{display:flex;align-items:center;gap:12px}
+    .featured-date{font-size:12px;font-weight:300;color:rgba(255,255,255,.3)}
+    .featured-stat{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
+    .featured-stat-num{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+    .featured-stat-lbl{font-size:11px;font-weight:300;color:rgba(255,255,255,.4);text-align:center}
+    .section-label-plain{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:block}
+    .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .article-card{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .3s cubic-bezier(0.22,1,0.36,1);text-decoration:none;display:flex;flex-direction:column}
+    .article-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card);border-color:var(--border-gold)}
+    .card-category{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .card-title{font-size:16px;font-weight:600;color:var(--text-primary);line-height:1.4;margin-bottom:10px;flex:1}
+    .card-excerpt{font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.65;margin-bottom:16px}
+    .card-meta{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:0.5px solid var(--border)}
+    .card-date{font-size:11px;font-weight:300;color:var(--text-tertiary)}
+    .card-read{font-size:11px;font-weight:300;color:var(--text-tertiary)}
+    .articles-section{margin-bottom:56px}
+    @media(max-width:860px){.articles-grid{grid-template-columns:1fr 1fr}.featured-card{grid-template-columns:1fr}}
+    @media(max-width:600px){.articles-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav id="nav" role="navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo"><span class="co">Co</span><span class="linker">Linker</span></a>
+      <div class="nav-links">
+        <a href="../fonctionnalites.html">Fonctionnalités</a>
+        <a href="../commercants.html">Commerçants</a>
+        <a href="../tarifs.html">Tarifs</a>
+        <a href="../telecharger.html">Télécharger</a>
+      </div>
+      <div class="nav-right">
+        <a href="../telecharger.html" class="btn btn-gold" style="padding:10px 20px;font-size:14px">Démarrer gratuitement</a>
+        <button class="burger" id="burgerBtn" aria-label="Menu"><span class="burger-line"></span><span class="burger-line"></span><span class="burger-line"></span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../fonctionnalites.html" onclick="closeMobile()">Fonctionnalités</a>
+  <a href="../commercants.html" onclick="closeMobile()">Commerçants</a>
+  <a href="../tarifs.html" onclick="closeMobile()">Tarifs</a>
+  <a href="../telecharger.html" onclick="closeMobile()">Télécharger</a>
+  <a href="../telecharger.html" class="btn btn-gold" onclick="closeMobile()">Démarrer gratuitement</a>
+</div>
+
+<main>
+  <section class="blog-hero">
+    <div class="container">
+      <div class="tag-pill" style="margin-bottom:20px"><span class="dot"></span>Blog CoLinker</div>
+      <h1 class="blog-h1">Guides & stratégies<br>pour fidéliser vos clients</h1>
+      <p class="blog-sub">Articles pratiques pour les commerçants indépendants. Fidélisation, pass mensuels, analytics, anti-churn — tout ce qu'il faut pour faire revenir vos clients.</p>
+      <div class="blog-filters">
+        <button class="filter-btn active">Tous</button>
+        <button class="filter-btn">Guides pratiques</button>
+        <button class="filter-btn">Comparatifs</button>
+        <button class="filter-btn">Analytics</button>
+        <button class="filter-btn">Par secteur</button>
+        <button class="filter-btn">Témoignages</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="blog-body">
+    <div class="container">
+
+      <!-- FEATURED -->
+      <div class="featured">
+        <div class="featured-card">
+          <div style="position:relative;z-index:1">
+            <div class="featured-tag">✦ Article vedette</div>
+            <div class="featured-title">On a testé CoLinker pendant 30 jours : voici ce qui nous a bluffés</div>
+            <div class="featured-desc">Setup en 7 minutes, +40% de clients récurrents, 152€ de MRR créé avec les pass mensuels, 11 nouveaux avis Google. Notre test complet, chiffres à l'appui.</div>
+            <div class="featured-meta">
+              <a href="article-test-colinker-30-jours.html" class="btn btn-gold" style="padding:12px 24px;font-size:14px">Lire l'article →</a>
+              <span class="featured-date">Avril 2025 · 8 min</span>
+            </div>
+          </div>
+          <div class="featured-stat" style="position:relative;z-index:1">
+            <div class="featured-stat-num">9/10</div>
+            <div class="featured-stat-lbl">Notre verdict<br>après 30 jours</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMPACT -->
+      <div class="articles-section">
+        <span class="section-label-plain">Révélations & positionnement</span>
+        <div class="articles-grid">
+          <a href="article-colinker-app-fidelite-revolution-commerce-local.html" class="article-card">
+            <div class="card-category">Révélation</div>
+            <div class="card-title">CoLinker : l'app qui a réinventé la fidélité pour les commerçants locaux</div>
+            <div class="card-excerpt">On pensait que la fidélité digitale était réservée aux grandes enseignes. CoLinker vient de prouver le contraire.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">7 min</span></div>
+          </a>
+          <a href="article-colinker-vs-yollty-vs-heypongo-comparatif.html" class="article-card">
+            <div class="card-category">Comparatif</div>
+            <div class="card-title">CoLinker vs Yollty vs HeyPongo : notre verdict sans langue de bois</div>
+            <div class="card-excerpt">60 jours de test dans 3 commerces différents. Fonctionnalité par fonctionnalité, euro par euro.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">9 min</span></div>
+          </a>
+          <a href="article-temoignage-cafe-40-pour-cent-retours-colinker.html" class="article-card">
+            <div class="card-category">Témoignage</div>
+            <div class="card-title">+40% de clients récurrents en 30 jours : l'histoire du Café des Artistes</div>
+            <div class="card-excerpt">Jean-Marc a tout essayé avant CoLinker. Voici comment il a transformé son café en 4 semaines.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">8 min</span></div>
+          </a>
+          <a href="article-pourquoi-colinker-app-fidelite-plus-complete.html" class="article-card">
+            <div class="card-category">Positionnement</div>
+            <div class="card-title">Pourquoi CoLinker est l'app de fidélité la plus complète pour les indépendants</div>
+            <div class="card-excerpt">9 fonctionnalités uniques, gratuité au démarrage, pass mensuels exclusifs. Ce que les grandes enseignes ont — enfin accessible.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">8 min</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- GUIDES -->
+      <div class="articles-section">
+        <span class="section-label-plain">Guides pratiques</span>
+        <div class="articles-grid">
+          <a href="article-programme-fidelite-digital-commerce.html" class="article-card">
+            <div class="card-category">Guide pratique</div>
+            <div class="card-title">Comment créer un programme de fidélité digital pour son commerce en 2025</div>
+            <div class="card-excerpt">Scanner QR, points, récompenses, pass mensuels — le guide complet pour se lancer en 10 minutes.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">10 min</span></div>
+          </a>
+          <a href="article-pass-mensuel-commerce.html" class="article-card">
+            <div class="card-category">Guide pratique</div>
+            <div class="card-title">Pass mensuel pour commerce : créer un abonnement et générer des revenus récurrents</div>
+            <div class="card-excerpt">La fonctionnalité que personne ne vous a encore proposée. Comment transformer vos clients en abonnés dès cette semaine.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">9 min</span></div>
+          </a>
+          <a href="article-scanner-qr-fidelite-commerce.html" class="article-card">
+            <div class="card-category">Guide pratique</div>
+            <div class="card-title">Comment mettre en place un scanner QR de fidélité en 10 minutes</div>
+            <div class="card-excerpt">Pas de matériel spécial. Votre téléphone existant suffit. Premier scan en 10 minutes chrono.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">5 min</span></div>
+          </a>
+          <a href="article-flash-deal-commerce-jours-creux.html" class="article-card">
+            <div class="card-category">Fonctionnalité</div>
+            <div class="card-title">Flash Deal : remplir son commerce les jours creux en 30 secondes</div>
+            <div class="card-excerpt">Un lundi pluvieux, une heure creuse — le Flash Deal géolocalisé est la réponse. Comment ça marche et 5 exemples concrets.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">6 min</span></div>
+          </a>
+          <a href="article-obtenir-avis-google-commerce.html" class="article-card">
+            <div class="card-category">Marketing local</div>
+            <div class="card-title">Comment obtenir plus d'avis Google : la méthode qui s'automatise</div>
+            <div class="card-excerpt">De 3-7% de conversion en caisse à 28-35% avec les invitations push automatiques. La méthode sans effort.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">6 min</span></div>
+          </a>
+          <a href="article-revenus-recurrents-commercant-independant.html" class="article-card">
+            <div class="card-category">Stratégie</div>
+            <div class="card-title">Revenus récurrents pour commerçant : 5 modèles qui fonctionnent</div>
+            <div class="card-excerpt">Pass mensuel, box hebdomadaire, club VIP, prépaiement crédit, partenariat entreprise. 5 modèles applicables dès cette semaine.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">9 min</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- STRATÉGIE -->
+      <div class="articles-section">
+        <span class="section-label-plain">Stratégie & analytics</span>
+        <div class="articles-grid">
+          <a href="article-augmenter-ca-commerce-fidelisation.html" class="article-card">
+            <div class="card-category">Stratégie</div>
+            <div class="card-title">Comment augmenter le CA de son commerce grâce à la fidélisation</div>
+            <div class="card-excerpt">Fréquence, pass, anti-churn, avis Google — les 4 leviers pour +25 à +40% de CA en 6 mois.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">9 min</span></div>
+          </a>
+          <a href="article-churn-client-commerce-clients-inactifs.html" class="article-card">
+            <div class="card-category">Analytics</div>
+            <div class="card-title">Churn client : détecter et reconquérir vos clients inactifs avant qu'ils partent</div>
+            <div class="card-excerpt">68% des churns surviennent par "indifférence perçue". Comment les détecter à J+21 et réagir à temps.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">9 min</span></div>
+          </a>
+          <a href="article-kpi-fidelisation-commerce.html" class="article-card">
+            <div class="card-category">Analytics</div>
+            <div class="card-title">Les 5 KPIs indispensables pour piloter la fidélisation de son commerce</div>
+            <div class="card-excerpt">Rétention, fréquence, churn, LTV, taux de conversion pass — les 5 métriques qui changent tout.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">8 min</span></div>
+          </a>
+          <a href="article-ltv-lifetime-value-commerce-local.html" class="article-card">
+            <div class="card-category">Analytics</div>
+            <div class="card-title">LTV client : comment la calculer et l'améliorer pour votre commerce</div>
+            <div class="card-excerpt">Un abonné Gold vaut 20× plus qu'un client Standard. La formule et les 4 leviers pour l'améliorer.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">8 min</span></div>
+          </a>
+          <a href="article-taux-retention-client-commerce.html" class="article-card">
+            <div class="card-category">Analytics</div>
+            <div class="card-title">Taux de rétention client : définition, calcul et comment l'améliorer</div>
+            <div class="card-excerpt">L'indicateur le plus parlant de la santé d'un commerce. Ce que dit votre taux et comment le faire progresser.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">7 min</span></div>
+          </a>
+          <a href="article-tiers-fidelite-gamification-commerce.html" class="article-card">
+            <div class="card-category">Stratégie</div>
+            <div class="card-title">Tiers de fidélité Standard → Platinum : comment gamifier son programme</div>
+            <div class="card-excerpt">Le "goal gradient effect" explique pourquoi vos clients accélèrent leurs visites à 68% de leur barre Gold.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">8 min</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- COMPARATIFS -->
+      <div class="articles-section">
+        <span class="section-label-plain">Comparatifs & décision</span>
+        <div class="articles-grid">
+          <a href="article-comparatif-apps-fidelite.html" class="article-card">
+            <div class="card-category">Comparatif</div>
+            <div class="card-title">Les 7 meilleures apps de fidélité pour commerçants indépendants en 2025</div>
+            <div class="card-excerpt">Tableau comparatif complet. Prix, fonctionnalités, verdict. CoLinker vs HeyPongo vs ZéroSix vs Yollty.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">10 min</span></div>
+          </a>
+          <a href="article-carte-fidelite-papier-vs-application-mobile.html" class="article-card">
+            <div class="card-category">Comparatif</div>
+            <div class="card-title">Carte de fidélité papier vs application mobile : que choisir ?</div>
+            <div class="card-excerpt">Comparaison honnête, critère par critère. Et dans quel cas la carte papier reste encore pertinente.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">7 min</span></div>
+          </a>
+          <a href="article-fidelite-locale-vs-grandes-enseignes.html" class="article-card">
+            <div class="card-category">Stratégie</div>
+            <div class="card-title">Fidélité locale vs grandes enseignes : comment les indépendants peuvent gagner</div>
+            <div class="card-excerpt">McDonald's dépense des millions. Vous avez la proximité. Comment transformer cet avantage en système gagnant.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">7 min</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAR SECTEUR -->
+      <div class="articles-section">
+        <span class="section-label-plain">Par type de commerce</span>
+        <div class="articles-grid">
+          <a href="article-programme-fidelite-cafe-restaurant.html" class="article-card">
+            <div class="card-category">Par secteur — ☕</div>
+            <div class="card-title">Programme de fidélité pour café et restaurant : guide complet 2025</div>
+            <div class="card-excerpt">Pass Café mensuel, Flash Deals happy hour, avis Google automatiques. Tout le playbook pour le secteur CHR.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">9 min</span></div>
+          </a>
+          <a href="article-fidelisation-salon-coiffure-beaute.html" class="article-card">
+            <div class="card-category">Par secteur — 💆</div>
+            <div class="card-title">Fidélisation pour salon de coiffure et institut beauté</div>
+            <div class="card-excerpt">Pass Brushing, Pass Soin, rappels automatiques, anti-churn — le guide complet pour le secteur beauté.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">8 min</span></div>
+          </a>
+          <a href="article-fidelisation-salle-sport-yoga-pass-mensuel.html" class="article-card">
+            <div class="card-category">Par secteur — 🏋️</div>
+            <div class="card-title">Salle de sport et studio yoga : fidélisez avec un pass mensuel</div>
+            <div class="card-excerpt">Le churn de janvier, les challenges gamifiés, le pass cours collectifs. Tout pour transformer l'intention en habitude.</div>
+            <div class="card-meta"><span class="card-date">Avril 2025</span><span class="card-read">8 min</span></div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="co">Co</span><span class="linker">Linker</span></div>
+        <p class="footer-tagline">La fidélité, réinventée.<br>Connecter commerçants et clients locaux depuis 2024.</p>
+      </div>
+      <div class="footer-col"><div class="footer-col-title">Produit</div><ul><li><a href="../fonctionnalites.html">Fonctionnalités</a></li><li><a href="../tarifs.html">Tarifs</a></li><li><a href="../commercants.html">Commerçants</a></li><li><a href="../telecharger.html">Télécharger</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Blog</div><ul><li><a href="index.html">Tous les articles</a></li><li><a href="article-test-colinker-30-jours.html">Test 30 jours</a></li><li><a href="article-comparatif-apps-fidelite.html">Comparatif apps</a></li><li><a href="article-pass-mensuel-commerce.html">Pass mensuels</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Légal</div><ul><li><a href="#">CGU</a></li><li><a href="#">Confidentialité</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 CoLinker. Fait avec <span class="heart">♥</span> en France.</span>
+      <div class="footer-badges"><span class="footer-badge">4,9 App Store</span><span class="footer-badge">RGPD conforme</span></div>
+    </div>
+  </div>
+</footer>
+<script src="../main.js"></script>
+</body>
+</html>
